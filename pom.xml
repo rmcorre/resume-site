@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.academiadecodigo.codezillas</groupId>
-    <artifactId>portfolio</artifactId>
+    <artifactId>portfolioApp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>portfolio</name>
+    <name>portfolioApp</name>
     <description>Portfolio Web Application</description>
 
     <properties>
