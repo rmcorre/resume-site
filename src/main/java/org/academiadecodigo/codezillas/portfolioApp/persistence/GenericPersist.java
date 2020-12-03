@@ -18,11 +18,6 @@ public abstract class GenericPersist<T extends Model> implements Persist<T> {
     @Override
     public T find(Integer id) {
 
-        if (id == null) {
-            System.out.println("Persist find(id) parameter is null");
-            return null;
-        }
-
         T result = null;
         for (T element : list) {
             if (element.getId().equals(id)) {
