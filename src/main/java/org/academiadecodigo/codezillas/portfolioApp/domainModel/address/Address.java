@@ -2,12 +2,14 @@ package org.academiadecodigo.codezillas.portfolioApp.domainModel.address;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
 
+import javax.persistence.Entity;
 import java.util.Objects;
 
+@Entity
 public class Address extends AbstractModel {
 
-    private String type;
-    private String number;
+    private String subject;
+    private String num;
     private String address;
     private String parish;
     private String townCity;
@@ -17,20 +19,20 @@ public class Address extends AbstractModel {
     private String countryRegion;
     private String postalCode;
 
-    public String getType() {
-        return type;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setSubject(String type) {
+        this.subject = type;
     }
 
-    public String getNumber() {
-        return number;
+    public String getNum() {
+        return num;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setNum(String number) {
+        this.num = number;
     }
 
     public String getAddress() {
@@ -102,8 +104,8 @@ public class Address extends AbstractModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address1 = (Address) o;
-        return Objects.equals(type, address1.type) &&
-                Objects.equals(number, address1.number) &&
+        return Objects.equals(subject, address1.subject) &&
+                Objects.equals(num, address1.num) &&
                 Objects.equals(address, address1.address) &&
                 Objects.equals(parish, address1.parish) &&
                 Objects.equals(townCity, address1.townCity) &&
@@ -116,14 +118,14 @@ public class Address extends AbstractModel {
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, number, address, parish, townCity, county, stateProvince, island, countryRegion, postalCode);
+        return Objects.hash(subject, num, address, parish, townCity, county, stateProvince, island, countryRegion, postalCode);
     }
 
     @Override
     public String toString() {
         return "Address{" +
-                "type='" + type + '\'' +
-                ", number='" + number + '\'' +
+                "subject='" + subject + '\'' +
+                ", num='" + num + '\'' +
                 ", address='" + address + '\'' +
                 ", parish='" + parish + '\'' +
                 ", townCity='" + townCity + '\'' +
