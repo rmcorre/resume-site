@@ -2,6 +2,7 @@ package org.academiadecodigo.codezillas.portfolioApp.dao;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.Model;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -10,6 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
+@Transactional
 public abstract class GenericDAO<T extends Model> implements DAO<T> {
 
     @Autowired
