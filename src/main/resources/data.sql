@@ -1,0 +1,2 @@
+insert into identity (id, version, creation_time, update_time, first_name, last_name, email, phone)
+values (1, 0, current_timestamp, current_timestamp, 'Horacio', 'Correia', 'rmcorre@gmail.com', '91 421 3861');
