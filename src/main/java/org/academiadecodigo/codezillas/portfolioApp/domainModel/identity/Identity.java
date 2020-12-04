@@ -14,18 +14,6 @@ public class Identity extends AbstractModel {
     private String email;
     private String phone;
 
-    public Identity() {
-
-    }
-
-    public Identity(Integer id, Integer version, Date creationTime, Date updateTime, String firstName, String lastName, String email, String phone) {
-        super(id, version, creationTime, updateTime);
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-    }
-
     public String getFirstName() {
         return firstName;
     }

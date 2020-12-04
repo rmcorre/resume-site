@@ -9,9 +9,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = PortfolioApplication.class)
@@ -23,9 +28,39 @@ class IdentityDAOTest {
     private IdentityDAO identityDAO;
 
     @Test
-    void find_basicTest() {
+    void find_basic() {
         Identity identity = identityDAO.find(1);
         assertEquals("Horacio", identity.getFirstName());
+    }
+
+    @Test
+    void findAll_basic() {
+        List<Identity> identityList = identityDAO.findAll();
+        assertEquals(3, identityList.size());
+    }
+
+    @Test
+    @DirtiesContext
+    void saveOrUpdate_basic() {
+        Identity identity = new Identity();
+        identity.setId(4);
+        identity.setVersion(0);
+        identity.setCreationTime(new Date());
+        identity.setUpdateTime(new Date());
+        identity.setFirstName("Jimmy");
+        identity.setLastName("Page");
+        identity.setEmail("jimmy@gmail.com");
+        identity.setPhone("91 777 7777");
+
+        identityDAO.saveOrUpdate(identity);
+        assertEquals(identity, identityDAO.find(4));
+    }
+
+    @Test
+    @DirtiesContext
+    void delete_basic() {
+        identityDAO.delete(1);
+        assertNull(identityDAO.find(1));
     }
 
 }
