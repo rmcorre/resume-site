@@ -1,9 +1,9 @@
 package org.academiadecodigo.codezillas.portfolioApp.dao;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.Model;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public abstract class GenericDAO<T extends Model> implements DAO<T> {
 
-    @PersistenceContext
+    @Autowired
     protected EntityManager em;
 
     protected Class<T> modelType;
