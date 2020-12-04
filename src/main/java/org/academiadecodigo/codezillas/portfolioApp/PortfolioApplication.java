@@ -1,6 +1,8 @@
 package org.academiadecodigo.codezillas.portfolioApp;
 
+import org.academiadecodigo.codezillas.portfolioApp.dao.address.AddressDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.identity.IdentityDAO;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.address.Address;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +19,9 @@ public class PortfolioApplication implements CommandLineRunner {
     @Autowired
     private IdentityDAO identityDAO;
 
+    @Autowired
+    private AddressDAO addressDAO;
+
     public static void main(String[] args) {
         SpringApplication.run(PortfolioApplication.class, args);
     }
@@ -25,5 +30,8 @@ public class PortfolioApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Identity identity = identityDAO.find(1);
         logger.info("Identity 1 --> {}", identity);
+
+        Address address = addressDAO.find(1);
+        logger.info("Address 1 --> {}", address);
     }
 }
