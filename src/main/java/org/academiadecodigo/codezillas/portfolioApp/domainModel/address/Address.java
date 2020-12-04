@@ -2,33 +2,20 @@ package org.academiadecodigo.codezillas.portfolioApp.domainModel.address;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
 
-import java.util.Date;
 import java.util.Objects;
 
 public class Address extends AbstractModel {
 
     private String type;
-    private String houseAptSuite;
+    private String number;
     private String address;
-    private String parishTownCity;
-    private String countyStateProvince;
+    private String parish;
+    private String townCity;
+    private String county;
+    private String stateProvince;
+    private String island;
     private String countryRegion;
     private String postalCode;
-
-    public Address() {
-
-    }
-
-    public Address(Integer id, Integer version, Date creationTime, Date updateTime, String type, String houseAptSuite, String address, String parishTownCity, String countyStateProvince, String countryRegion, String postalCode) {
-        super(id, version, creationTime, updateTime);
-        this.type = type;
-        this.houseAptSuite = houseAptSuite;
-        this.address = address;
-        this.parishTownCity = parishTownCity;
-        this.countyStateProvince = countyStateProvince;
-        this.countryRegion = countryRegion;
-        this.postalCode = postalCode;
-    }
 
     public String getType() {
         return type;
@@ -38,12 +25,12 @@ public class Address extends AbstractModel {
         this.type = type;
     }
 
-    public String getHouseAptSuite() {
-        return houseAptSuite;
+    public String getNumber() {
+        return number;
     }
 
-    public void setHouseAptSuite(String houseAptSuite) {
-        this.houseAptSuite = houseAptSuite;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getAddress() {
@@ -54,20 +41,44 @@ public class Address extends AbstractModel {
         this.address = address;
     }
 
-    public String getParishTownCity() {
-        return parishTownCity;
+    public String getParish() {
+        return parish;
     }
 
-    public void setParishTownCity(String parishTownCity) {
-        this.parishTownCity = parishTownCity;
+    public void setParish(String parish) {
+        this.parish = parish;
     }
 
-    public String getCountyStateProvince() {
-        return countyStateProvince;
+    public String getTownCity() {
+        return townCity;
     }
 
-    public void setCountyStateProvince(String countyStateProvince) {
-        this.countyStateProvince = countyStateProvince;
+    public void setTownCity(String townCity) {
+        this.townCity = townCity;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String getStateProvince() {
+        return stateProvince;
+    }
+
+    public void setStateProvince(String stateProvince) {
+        this.stateProvince = stateProvince;
+    }
+
+    public String getIsland() {
+        return island;
+    }
+
+    public void setIsland(String island) {
+        this.island = island;
     }
 
     public String getCountryRegion() {
@@ -92,27 +103,33 @@ public class Address extends AbstractModel {
         if (o == null || getClass() != o.getClass()) return false;
         Address address1 = (Address) o;
         return Objects.equals(type, address1.type) &&
-                Objects.equals(houseAptSuite, address1.houseAptSuite) &&
+                Objects.equals(number, address1.number) &&
                 Objects.equals(address, address1.address) &&
-                Objects.equals(parishTownCity, address1.parishTownCity) &&
-                Objects.equals(countyStateProvince, address1.countyStateProvince) &&
+                Objects.equals(parish, address1.parish) &&
+                Objects.equals(townCity, address1.townCity) &&
+                Objects.equals(county, address1.county) &&
+                Objects.equals(stateProvince, address1.stateProvince) &&
+                Objects.equals(island, address1.island) &&
                 Objects.equals(countryRegion, address1.countryRegion) &&
                 Objects.equals(postalCode, address1.postalCode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, houseAptSuite, address, parishTownCity, countyStateProvince, countryRegion, postalCode);
+        return Objects.hash(type, number, address, parish, townCity, county, stateProvince, island, countryRegion, postalCode);
     }
 
     @Override
     public String toString() {
         return "Address{" +
                 "type='" + type + '\'' +
-                ", houseAptSuite='" + houseAptSuite + '\'' +
+                ", number='" + number + '\'' +
                 ", address='" + address + '\'' +
-                ", parishTownCity='" + parishTownCity + '\'' +
-                ", countyStateProvince='" + countyStateProvince + '\'' +
+                ", parish='" + parish + '\'' +
+                ", townCity='" + townCity + '\'' +
+                ", county='" + county + '\'' +
+                ", stateProvince='" + stateProvince + '\'' +
+                ", island='" + island + '\'' +
                 ", countryRegion='" + countryRegion + '\'' +
                 ", postalCode='" + postalCode + '\'' +
                 "} " + super.toString();
