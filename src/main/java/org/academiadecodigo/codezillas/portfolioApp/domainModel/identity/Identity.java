@@ -2,9 +2,11 @@ package org.academiadecodigo.codezillas.portfolioApp.domainModel.identity;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
 
+import javax.persistence.Entity;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class Identity extends AbstractModel {
 
     private String firstName;
