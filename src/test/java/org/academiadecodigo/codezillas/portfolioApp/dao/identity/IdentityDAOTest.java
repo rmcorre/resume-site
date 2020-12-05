@@ -1,7 +1,6 @@
-package org.academiadecodigo.codezillas.portfolioApp.dao.identityDAO;
+package org.academiadecodigo.codezillas.portfolioApp.dao.identity;
 
 import org.academiadecodigo.codezillas.portfolioApp.PortfolioApplication;
-import org.academiadecodigo.codezillas.portfolioApp.dao.identity.IdentityDAO;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

@@ -15,12 +15,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PortfolioApplication implements CommandLineRunner {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final IdentityDAO identityDAO;
+    private final AddressDAO addressDAO;
 
     @Autowired
-    private IdentityDAO identityDAO;
-
-    @Autowired
-    private AddressDAO addressDAO;
+    public PortfolioApplication(IdentityDAO identityDAO, AddressDAO addressDAO) {
+        this.identityDAO = identityDAO;
+        this.addressDAO = addressDAO;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(PortfolioApplication.class, args);
