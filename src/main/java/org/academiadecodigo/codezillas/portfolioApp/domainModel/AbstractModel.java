@@ -16,16 +16,16 @@ public class AbstractModel implements Model{
     private Date creationTime;
     private Date updateTime;
 
-    public AbstractModel() {
+//    public AbstractModel() {
+//
+//    }
 
-    }
-
-    public AbstractModel(Integer id, Integer version, Date creationTime, Date updateTime) {
-        this.id = id;
-        this.version = version;
-        this.creationTime = creationTime;
-        this.updateTime = updateTime;
-    }
+//    public AbstractModel(Integer id, Integer version, Date creationTime, Date updateTime) {
+//        this.id = id;
+//        this.version = version;
+//        this.creationTime = creationTime;
+//        this.updateTime = updateTime;
+//    }
 
     @Override
     public Integer getId() {
