@@ -3,13 +3,12 @@ package org.academiadecodigo.codezillas.portfolioApp.dao.identity;
 import org.academiadecodigo.codezillas.portfolioApp.PortfolioApplication;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +16,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = PortfolioApplication.class)
 class IdentityDAOTest {
 
@@ -40,6 +38,7 @@ class IdentityDAOTest {
 
     @Test
     @DirtiesContext
+    @Transactional
     void saveOrUpdate_basic() {
         Identity identity = new Identity();
         identity.setId(4);
@@ -57,6 +56,7 @@ class IdentityDAOTest {
 
     @Test
     @DirtiesContext
+    @Transactional
     void delete_basic() {
         identityDAO.delete(1);
         assertNull(identityDAO.find(1));

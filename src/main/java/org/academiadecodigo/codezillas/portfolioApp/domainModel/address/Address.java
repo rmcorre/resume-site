@@ -1,8 +1,10 @@
 package org.academiadecodigo.codezillas.portfolioApp.domainModel.address;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +20,9 @@ public class Address extends AbstractModel {
     private String island;
     private String countryRegion;
     private String postalCode;
+
+    @ManyToOne
+    private Identity identity;
 
     public String getSubject() {
         return subject;
@@ -99,6 +104,14 @@ public class Address extends AbstractModel {
         this.postalCode = postalCode;
     }
 
+    public Identity getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(Identity identity) {
+        this.identity = identity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -113,12 +126,13 @@ public class Address extends AbstractModel {
                 Objects.equals(stateProvince, address1.stateProvince) &&
                 Objects.equals(island, address1.island) &&
                 Objects.equals(countryRegion, address1.countryRegion) &&
-                Objects.equals(postalCode, address1.postalCode);
+                Objects.equals(postalCode, address1.postalCode) &&
+                Objects.equals(identity, address1.identity);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(subject, num, address, parish, townCity, county, stateProvince, island, countryRegion, postalCode);
+        return Objects.hash(subject, num, address, parish, townCity, county, stateProvince, island, countryRegion, postalCode, identity);
     }
 
     @Override
@@ -134,6 +148,7 @@ public class Address extends AbstractModel {
                 ", island='" + island + '\'' +
                 ", countryRegion='" + countryRegion + '\'' +
                 ", postalCode='" + postalCode + '\'' +
+                ", identity=" + identity +
                 "} " + super.toString();
     }
 }
