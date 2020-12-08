@@ -1,53 +1,49 @@
 package org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio;
 
-import org.academiadecodigo.codezillas.portfolioApp.domainModel.address.Address;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
 
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Portfolio {
+@Entity
+public class Portfolio extends AbstractModel {
 
-    //Add an Identity field to accept an identity from a select input
-    private Identity identity;
+    private String category;
+    private String specialization;
 
-    //Add an Address field to accept an address from a select input
-    private Address address;
+    @ManyToMany
+    @JoinTable(
+        name = "portfolio_identity",
+        joinColumns = @JoinColumn(name = "portfolio_id"),
+        inverseJoinColumns = @JoinColumn(name = "identity_id"))
+    private final List<Identity> identityList = new ArrayList<>();
 
-    public Identity getIdentity() {
-        return identity;
+    public String getCategory() {
+        return category;
     }
 
-    public void setIdentity(Identity identity) {
-        this.identity = identity;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getSpecialization() {
+        return specialization;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Portfolio portfolio = (Portfolio) o;
-        return Objects.equals(identity, portfolio.identity) &&
-                Objects.equals(address, portfolio.address);
+    public List<Identity> getIdentityList() {
+        return identityList;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(identity, address);
-    }
-
-    @Override
-    public String toString() {
-        return "Portfolio{" +
-                "identity=" + identity +
-                ", address=" + address +
-                '}';
+    public void addIdentity(Identity identity) {
+        identityList.add(identity);
     }
 }
