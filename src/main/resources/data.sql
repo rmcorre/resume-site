@@ -9,12 +9,12 @@ values (3, 0, current_timestamp, current_timestamp, 'Jorge', 'Almeida', 'jorge@g
 
 insert into address (
     id, version, creation_time, update_time, subject, num, address, parish, town_city, county, state_province,
-    island, country_region, postal_code)
+    island, country_region, postal_code, identity_id)
 values (1, 0, current_timestamp, current_timestamp,
-        'Identity', '19', 'Rua Eng Hernani Santos', null, 'Vila De Nordeste', 'Nordeste', null, 'Sao Miguel', 'Azores', '9630-202');
+        'Identity', '19', 'Rua Eng Hernani Santos', null, 'Vila De Nordeste', 'Nordeste', null, 'Sao Miguel', 'Azores', '9630-202', 1);
 
 insert into address (
     id, version, creation_time, update_time, subject, num, address, parish, town_city, county, state_province,
-    island, country_region, postal_code)
+    island, country_region, postal_code, identity_id)
 values (2, 0, current_timestamp, current_timestamp,
-        'Identity', '67c', 'Rua Teofilo De Braga', 'Sao Jose', 'Ponta Delgada', 'Ponta Delgada', null, 'Sao Miguel', 'Azores', '9500-000');
+        'Identity', '67c', 'Rua Teofilo De Braga', 'Sao Jose', 'Ponta Delgada', 'Ponta Delgada', null, 'Sao Miguel', 'Azores', '9500-000', 1);

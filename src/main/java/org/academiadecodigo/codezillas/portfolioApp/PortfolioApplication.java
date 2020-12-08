@@ -30,10 +30,11 @@ public class PortfolioApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Identity identity = identityDAO.find(1);
-        logger.info("Identity 1 --> {}", identity);
+//        Identity identity = identityDAO.find(1);
+//        logger.info("Identity 1 --> {}", identity);
 
-        Address address = addressDAO.find(1);
-        logger.info("Address 1 --> {}", address);
+//        Address address = addressDAO.find(1);
+//        logger.info("Address 1 --> {}", address);
+
     }
 }

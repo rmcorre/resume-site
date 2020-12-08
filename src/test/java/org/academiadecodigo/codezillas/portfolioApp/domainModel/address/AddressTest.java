@@ -1,9 +1,9 @@
-package org.academiadecodigo.codezillas.portfolioApp.domainModel.identity;
+package org.academiadecodigo.codezillas.portfolioApp.domainModel.address;
 
 import org.academiadecodigo.codezillas.portfolioApp.PortfolioApplication;
 import org.academiadecodigo.codezillas.portfolioApp.dao.address.AddressDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.identity.IdentityDAO;
-import org.academiadecodigo.codezillas.portfolioApp.domainModel.address.Address;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes = PortfolioApplication.class)
-public class IdentityTest {
+public class AddressTest {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -30,7 +30,6 @@ public class IdentityTest {
 
     private Identity identity;
     private Address address;
-
 
     @BeforeEach
     public void init() {
@@ -68,15 +67,14 @@ public class IdentityTest {
     @Test
     @Transactional
     @DirtiesContext
-    void getAddressTest() {
+    void getIdentityTest() {
 
         identity.addAddress(address);
         identityDAO.saveOrUpdate(identity);
-        logger.info("identity.getAddressList().get(0).getId() --> {}", identity.getAddressList().get(0).getId());
 
+        logger.info("address.getIdentity().getId() --> {}", address.getIdentity().getId());
 
-        assertEquals(4, identity.getId());
-        assertEquals(3, identity.getAddressList().get(0).getId());
+        assertEquals(4, address.getIdentity().getId());
     }
 
 
