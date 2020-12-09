@@ -106,9 +106,4 @@ public class PortfolioDAOTest {
 
         assertEquals(1, portfolio.getIdentityList().size());
     }
-
-    //Todo:
-    // Commit changes on portfolio branch.
-    // Merge portfolio branch into dev.
-
 }
