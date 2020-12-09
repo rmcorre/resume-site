@@ -10,6 +10,12 @@ values (3, 0, current_timestamp, current_timestamp, 'Fabio', 'Barbosa', 'fabio@g
 insert into identity (id, version, creation_time, update_time, first_name, last_name, email, phone)
 values (4, 0, current_timestamp, current_timestamp, 'Jorge', 'Almeida', 'jorge@gmail.com', '91 888 8888');
 
+insert into education (id, version, creation_time, update_time, institution, course, start_date, end_date)
+values (1, 0, current_timestamp, current_timestamp, 'Concordia College University', 'Bachelor of Arts', 'Sep 1992', 'May 1995');
+
+insert into education (id, version, creation_time, update_time, institution, course, start_date, end_date)
+values (2, 0, current_timestamp, current_timestamp, 'Academia De Codigo', 'Full Stack Developer', 'May 2019', 'Aug 2019');
+
 insert into address (
     id, version, creation_time, update_time, subject, num, address, parish, town_city, county, state_province,
     island, country_region, postal_code, identity_id)
