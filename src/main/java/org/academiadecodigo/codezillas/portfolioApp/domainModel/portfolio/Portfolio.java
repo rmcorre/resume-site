@@ -9,6 +9,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Portfolio extends AbstractModel {
@@ -45,5 +46,27 @@ public class Portfolio extends AbstractModel {
 
     public void addIdentity(Identity identity) {
         identityList.add(identity);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Portfolio portfolio = (Portfolio) o;
+        return Objects.equals(category, portfolio.category) &&
+                Objects.equals(specialization, portfolio.specialization);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(category, specialization);
+    }
+
+    @Override
+    public String toString() {
+        return "Portfolio{" +
+                "category='" + category + '\'' +
+                ", specialization='" + specialization + '\'' +
+                "} " + super.toString();
     }
 }
