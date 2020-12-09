@@ -2,10 +2,14 @@ package org.academiadecodigo.codezillas.portfolioApp.domainModel.identity;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.address.Address;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio.Portfolio;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Identity extends AbstractModel {
@@ -17,6 +21,9 @@ public class Identity extends AbstractModel {
 
     @OneToMany(mappedBy = "identity")
     private final List<Address> addressList  = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "identityList")
+    private final List<Portfolio> portfolioList = new ArrayList<>();
 
     public String getFirstName() {
         return firstName;
@@ -63,6 +70,14 @@ public class Identity extends AbstractModel {
         addressList.remove(address);
     }
 
+    public List<Portfolio> getPortfolioList() {
+        return portfolioList;
+    }
+
+    public void addPortfolio(Portfolio portfolio) {
+        portfolioList.add(portfolio);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,13 +86,12 @@ public class Identity extends AbstractModel {
         return Objects.equals(firstName, identity.firstName) &&
                 Objects.equals(lastName, identity.lastName) &&
                 Objects.equals(email, identity.email) &&
-                Objects.equals(phone, identity.phone) &&
-                Objects.equals(addressList, identity.addressList);
+                Objects.equals(phone, identity.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, email, phone, addressList);
+        return Objects.hash(firstName, lastName, email, phone);
     }
 
     @Override

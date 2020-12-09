@@ -2,10 +2,13 @@ insert into identity (id, version, creation_time, update_time, first_name, last_
 values (1, 0, current_timestamp, current_timestamp, 'Horacio', 'Correia', 'rmcorre@gmail.com', '91 421 3861');
 
 insert into identity (id, version, creation_time, update_time, first_name, last_name, email, phone)
-values (2, 0, current_timestamp, current_timestamp, 'Fabio', 'Barbosa', 'fabio@gmail.com', '91 999 9999');
+values (2, 0, current_timestamp, current_timestamp, 'Ross', 'Correia', 'rmcorre@gmail.com', '91 421 3861');
 
 insert into identity (id, version, creation_time, update_time, first_name, last_name, email, phone)
-values (3, 0, current_timestamp, current_timestamp, 'Jorge', 'Almeida', 'jorge@gmail.com', '91 888 8888');
+values (3, 0, current_timestamp, current_timestamp, 'Fabio', 'Barbosa', 'fabio@gmail.com', '91 999 9999');
+
+insert into identity (id, version, creation_time, update_time, first_name, last_name, email, phone)
+values (4, 0, current_timestamp, current_timestamp, 'Jorge', 'Almeida', 'jorge@gmail.com', '91 888 8888');
 
 insert into address (
     id, version, creation_time, update_time, subject, num, address, parish, town_city, county, state_province,
@@ -18,3 +21,17 @@ insert into address (
     island, country_region, postal_code, identity_id)
 values (2, 0, current_timestamp, current_timestamp,
         'Identity', '67c', 'Rua Teofilo De Braga', 'Sao Jose', 'Ponta Delgada', 'Ponta Delgada', null, 'Sao Miguel', 'Azores', '9500-000', 1);
+
+insert into portfolio (id, version, creation_time, update_time, category, specialization)
+values (1, 0, current_timestamp, current_timestamp, 'Development', 'Full Stack Developer');
+
+insert into portfolio (id, version, creation_time, update_time, category, specialization)
+values (2, 0, current_timestamp, current_timestamp, 'Development', 'Front End Developer');
+
+insert into portfolio (id, version, creation_time, update_time, category, specialization)
+values (3, 0, current_timestamp, current_timestamp, 'Development', 'Back End Developer');
+
+insert into portfolio_identity (portfolio_id, identity_id) values (1, 1);
+insert into portfolio_identity (portfolio_id, identity_id) values (1, 2);
+insert into portfolio_identity (portfolio_id, identity_id) values (2, 3);
+insert into portfolio_identity (portfolio_id, identity_id) values (3, 4);

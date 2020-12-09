@@ -33,7 +33,7 @@ class IdentityDAOTest {
     @Test
     void findAll_basic() {
         List<Identity> identityList = identityDAO.findAll();
-        assertEquals(3, identityList.size());
+        assertEquals(4, identityList.size());
     }
 
     @Test
@@ -41,7 +41,7 @@ class IdentityDAOTest {
     @Transactional
     void saveOrUpdate_basic() {
         Identity identity = new Identity();
-        identity.setId(4);
+        identity.setId(5);
         identity.setVersion(0);
         identity.setCreationTime(new Date());
         identity.setUpdateTime(new Date());
@@ -51,7 +51,7 @@ class IdentityDAOTest {
         identity.setPhone("91 777 7777");
 
         identityDAO.saveOrUpdate(identity);
-        assertEquals(identity, identityDAO.find(4));
+        assertEquals(identity, identityDAO.find(5));
     }
 
     @Test
