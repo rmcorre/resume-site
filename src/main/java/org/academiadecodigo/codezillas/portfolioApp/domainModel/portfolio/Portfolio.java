@@ -69,4 +69,13 @@ public class Portfolio extends AbstractModel {
                 ", specialization='" + specialization + '\'' +
                 "} " + super.toString();
     }
+
+    //Todo:
+    // Run all tests
+    // Implement education entity.
+    // Test education entity.
+    // Implement education dao.
+    // Test education dao.
+    // Implement educationList in Portfolio. Test educationList in Portfolio.
+
 }
