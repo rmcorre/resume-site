@@ -1,6 +1,7 @@
 package org.academiadecodigo.codezillas.portfolioApp.domainModel.address;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.education.Education;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
 
 import javax.persistence.Entity;
@@ -23,6 +24,9 @@ public class Address extends AbstractModel {
 
     @ManyToOne
     private Identity identity;
+
+    @ManyToOne
+    private Education education;
 
     public String getSubject() {
         return subject;
@@ -112,6 +116,14 @@ public class Address extends AbstractModel {
         this.identity = identity;
     }
 
+    public Education getEducation() {
+        return education;
+    }
+
+    public void setEducation(Education education) {
+        this.education = education;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -126,13 +138,12 @@ public class Address extends AbstractModel {
                 Objects.equals(stateProvince, address1.stateProvince) &&
                 Objects.equals(island, address1.island) &&
                 Objects.equals(countryRegion, address1.countryRegion) &&
-                Objects.equals(postalCode, address1.postalCode) &&
-                Objects.equals(identity, address1.identity);
+                Objects.equals(postalCode, address1.postalCode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(subject, num, address, parish, townCity, county, stateProvince, island, countryRegion, postalCode, identity);
+        return Objects.hash(subject, num, address, parish, townCity, county, stateProvince, island, countryRegion, postalCode);
     }
 
     @Override
@@ -148,7 +159,6 @@ public class Address extends AbstractModel {
                 ", island='" + island + '\'' +
                 ", countryRegion='" + countryRegion + '\'' +
                 ", postalCode='" + postalCode + '\'' +
-                ", identity=" + identity +
                 "} " + super.toString();
     }
 }
