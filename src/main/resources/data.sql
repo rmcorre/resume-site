@@ -10,12 +10,6 @@ values (3, 0, current_timestamp, current_timestamp, 'Fabio', 'Barbosa', 'fabio@g
 insert into identity (id, version, creation_time, update_time, first_name, last_name, email, phone)
 values (4, 0, current_timestamp, current_timestamp, 'Jorge', 'Almeida', 'jorge@gmail.com', '91 888 8888');
 
-insert into education (id, version, creation_time, update_time, institution, course, start_date, end_date)
-values (1, 0, current_timestamp, current_timestamp, 'Concordia College University', 'Bachelor of Arts', 'Sep 1992', 'May 1995');
-
-insert into education (id, version, creation_time, update_time, institution, course, start_date, end_date)
-values (2, 0, current_timestamp, current_timestamp, 'Academia De Codigo', 'Full Stack Developer', 'May 2019', 'Aug 2019');
-
 insert into address (
     id, version, creation_time, update_time, subject, num, address, parish, town_city, county, state_province,
     island, country_region, postal_code, identity_id)
@@ -27,6 +21,24 @@ insert into address (
     island, country_region, postal_code, identity_id)
 values (2, 0, current_timestamp, current_timestamp,
         'Identity', '67c', 'Rua Teofilo De Braga', 'Sao Jose', 'Ponta Delgada', 'Ponta Delgada', null, 'Sao Miguel', 'Azores', '9500-000', 1);
+
+insert into education (id, version, creation_time, update_time, institution, course, start_date, end_date)
+values (1, 0, current_timestamp, current_timestamp, 'Concordia College University', 'Bachelor of Arts', 'Sep 1992', 'May 1995');
+
+insert into education (id, version, creation_time, update_time, institution, course, start_date, end_date)
+values (2, 0, current_timestamp, current_timestamp, 'Academia De Codigo', 'Full Stack Developer', 'May 2019', 'Aug 2019');
+
+insert into address (
+    id, version, creation_time, update_time, subject, num, address, parish, town_city, county, state_province,
+    island, country_region, postal_code, identity_id, education_id)
+values (3, 0, current_timestamp, current_timestamp,
+        'Education', null, '7128 Ada Blvd NW', null, 'Edmonton', null, 'Alberta', null, 'Canada', 'T5B 4E4', null, 1);
+
+insert into address (
+    id, version, creation_time, update_time, subject, num, address, parish, town_city, county, state_province,
+    island, country_region, postal_code, identity_id, education_id)
+values (4, 0, current_timestamp, current_timestamp,
+        'Education', null, 'Rua de Jesus', null, 'Praia de Vitoria', null, null, 'Terceira', 'Azores', '9000-000', null, 2);
 
 insert into portfolio (id, version, creation_time, update_time, category, specialization)
 values (1, 0, current_timestamp, current_timestamp, 'Development', 'Full Stack Developer');
@@ -41,3 +53,6 @@ insert into portfolio_identity (portfolio_id, identity_id) values (1, 1);
 insert into portfolio_identity (portfolio_id, identity_id) values (1, 2);
 insert into portfolio_identity (portfolio_id, identity_id) values (2, 3);
 insert into portfolio_identity (portfolio_id, identity_id) values (3, 4);
+
+insert into portfolio_education (portfolio_id, education_id) values (1, 1);
+insert into portfolio_education (portfolio_id, education_id) values (1, 2);

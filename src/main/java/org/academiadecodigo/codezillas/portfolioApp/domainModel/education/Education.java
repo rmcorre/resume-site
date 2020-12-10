@@ -1,8 +1,12 @@
 package org.academiadecodigo.codezillas.portfolioApp.domainModel.education;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.address.Address;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio.Portfolio;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,8 +17,11 @@ public class Education extends AbstractModel {
     private String startDate;
     private String endDate;
 
+    @OneToMany(mappedBy = "education")
+    private final List<Address> addressList = new ArrayList<>();
 
-    //private String address;
+    @ManyToMany(mappedBy = "educationList")
+    private final List<Portfolio> portfolioList = new ArrayList<>();
 
     public String getInstitution() {
         return institution;
@@ -46,6 +53,19 @@ public class Education extends AbstractModel {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public List<Address> getAddressList() {
+        return addressList;
+    }
+
+    public void addAddress(Address address) {
+        addressList.add(address);
+        address.setEducation(this);
+    }
+
+    public List<Portfolio> getPortfolioList() {
+        return portfolioList;
     }
 
     @Override
