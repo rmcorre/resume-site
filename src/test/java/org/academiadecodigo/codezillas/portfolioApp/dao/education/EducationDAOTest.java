@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -71,6 +72,7 @@ public class EducationDAOTest {
 
     @Test
     @DirtiesContext
+    @Transactional
     public void delete_basic() {
         educationDAO.delete(2);
 

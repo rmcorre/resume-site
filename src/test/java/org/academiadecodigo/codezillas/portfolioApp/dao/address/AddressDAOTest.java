@@ -36,7 +36,7 @@ class AddressDAOTest {
     @Test
     void findAll_basic() {
         List<Address> addressList = addressDAO.findAll();
-        assertEquals(2, addressList.size());
+        assertEquals(4, addressList.size());
     }
 
     @Test
