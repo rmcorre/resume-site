@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/header">
+        <title>Index Page</title>
+    </head>
+    <body class="bg-light h-100">
+        <div class="container-fluid min-vh-100-100">
+            <div class="row">
+                <div class="col-3 leftSideBar min-vh-100">
+                    <div class="brand pt-4 pb-5">
+                        <div class="pic">
+                            <div class="identityWrapper">
+                                <h2 class="text-white w-100 mb-0 pl-1" >Horacio Correia</h2>
+                                <h6 class="text-white signikaReg mb-0 pl-1">Full Stack Developer</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pb-3">
+                        <h5 class="text-white w-100 pl-2 pr-3">About Myself</h5>
+                        <p class="summary text-white signikaSm w-100 pl-2 pr-3">
+                            I'm a Canadian expat with an adventurous spirit and a curiosity for the unknown. This sense of
+                            adventure and desire to explore the unknown has always been a strong motivator in my life, and
+                            has led me to some awesome experiences. Now, prepared to embark on a new journey, I'm itching
+                            to begin my next great adventure.
+                        </p>
+                    </div>
+                    <div class="px-2">
+                        <h5 class="text-white w-100">Contact Information</h5>
+                        <div class="text-white signikaSm w-100">rmcorre@gmail.com</div>
+                        <div class="text-white signikaSm w-100">91 421 3861</div>
+                        <div class="text-white signikaSm w-100">Sao Miguel, Azores</div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <h3 class="col-10 mx-auto mt-5 mb-2 slateBlue">Education</h3>
+                    <table class="table col-10 mx-auto mb-5">
+                        <tbody>
+                            <tr>
+                                <td class="signikaReg" style="width: 35%">
+                                    May 2019 - Aug 2019
+                                </td>
+                                <td class="h6 signikaReg" style="width: 65%">
+                                    Full Stack Developer <br>
+                                    Academia De Codigo <br>
+                                    Terceira, Azores
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="h3 col-10 mx-auto mb-2 slateBlue">Employment</div>
+                    <table class="table col-10 mx-auto mb-5">
+                        <tbody>
+                            <tr>
+                                <td class="signikaReg" style="width: 35%">
+                                        Apr 2016 - Oct 2017
+                                </td>
+                                <td class="h6 signikaReg" style="width: 65%">
+                                        Customer Representative <br>
+                                        Tesco <br>
+                                        Helping customers...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="col-3 rightSideBar">
+                    <div class="pt-4 pb-4">
+                        <h5 class="text-white w-100">Industry Knowledge</h5>
+        <!--                <c:forEach var="industryKnowledge" items="${industryKnowledge}">-->
+        <!--                    <div class="text-white signikaSm">${industryKnowledge.area}</div>-->
+        <!--                </c:forEach>-->
+                    </div>
+                    <div class="pb-4">
+                        <div class="h5 text-white w-100">Tools And Technology</div>
+                        <div class="row">
+                            <div class="col-3">
+        <!--                        <c:forEach var="backEnd" items="${backEndSkillCategory}">-->
+        <!--                            <div class="text-white signikaSm">${backEnd}</div>-->
+        <!--                        </c:forEach>-->
+                            </div>
+                            <div class="col-3">
+        <!--                        <c:forEach var="frontEnd" items="${frontEndSkillCategory}">-->
+        <!--                            <div class="text-white signikaSm">${frontEnd}</div>-->
+        <!--                        </c:forEach>-->
+                            </div>
+                            <div class="col-3">
+        <!--                        <c:forEach var="libraryAndFramework" items="${libraryAndFrameworkCategory}">-->
+        <!--                            <div class="text-white signikaSm">${libraryAndFramework}</div>-->
+        <!--                        </c:forEach>-->
+                            </div>
+                            <div class="col-3">
+        <!--                        <c:forEach var="tools" items="${tools}">-->
+        <!--                            <div class="text-white signikaSm">${tools}</div>-->
+        <!--                        </c:forEach>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<%@ include file="footer.jsp" %>
