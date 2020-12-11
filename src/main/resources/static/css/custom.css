@@ -1,0 +1,81 @@
+/*html, body {*/
+/*    font-family: 'Roboto Condensed', sans-serif;*/
+/*    height: 100%;*/
+/*}*/
+
+p, h1, h2, h3, h4, h5, h6 {
+    font-family: aileron, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.table td {
+    background-color: white;
+    font-family: aileron, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    vertical-align: middle;
+}
+
+.leftSideBar {
+    background-color: rgb(101,147,193);
+}
+
+.rightSideBar {
+    background-color: rgb(101,147,193);
+}
+
+.signikaReg {
+    font-family: 'Signika', sans-serif;
+}
+
+.signikaSm {
+    font-family: 'Signika', sans-serif;
+    font-size: .80em;
+}
+
+.brand {
+    padding-left: 3px;
+}
+
+.pic {
+    background-image: url("../img/profilepicColorAdjust3.jpg");
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 208px;
+    position: relative;
+}
+
+.identityWrapper {
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.summary {
+    text-align: justify;
+}
+
+.slateBlue {
+    color: rgb(101,147,193);
+}
+
+.bg-lightBlue {
+    background-color: #d9e4ff !important;
+}
+
+.text-darkBlue {
+    color: #4d7eff !important;
+}
+
+.card-text-sm {
+    font-size: .80rem;
+    margin-bottom: .2rem;
+}
+
+/*i.fas,*/
+/*i.fab {*/
+/*   font-size: 3em;*/
+/*}*/
