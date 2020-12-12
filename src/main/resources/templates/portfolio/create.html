@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/header">
+    <title>Create Portfolio Page</title>
+</head>
+<body class="bg-light h-100">
+    <div class="container pt-0">
+        <div class="row">
+            <div class="col pb-3">
+                <h3 class="text-secondary">Create Portfolio</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form
+                        action="#"
+                        th:action = "@{/portfolio/processPortfolio}"
+                        th:object = "${portfolioDTO}"
+                        method="post">
+
+                    <div class="form">
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label for="category">Category</label>
+                                <input
+                                        th:field="*{category}"
+                                        class="form-control"
+                                        type="text"
+                                        id="category"
+                                        list="categoryDataList"
+                                        placeholder="Enter or select a category"
+                                        aria-describedby="categoryHelp">
+                                    <datalist id="categoryDataList">
+                                        <option
+                                                th:each="category : ${categorySet}"
+                                                th:value="${category.toString()}"
+                                                th:text="${category.toString()}">
+                                        </option>
+                                    </datalist>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label for="specialization">Specialization</label>
+                                <select
+                                        th:field="*{specialization}"
+                                        class="form-control"
+                                        type="text"
+                                        id="specialization"
+                                        aria-describedby="specializationHelp">
+                                    <option
+                                            th:each="specialization : ${specializationSet}"
+                                            th:value="${specialization.toString()}"
+                                            th:text="${specialization.toString()}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label for="identity">Identity</label>
+                                <select
+                                        th:field="*{identity}"
+                                        class="form-control"
+                                        id="identity"
+                                        aria-describedby="identityHelp">
+                                    <option
+                                            th:each="identity : ${identityList}"
+                                            th:value="${identity.getId()}"
+                                            th:text="${identity.firstName + ' ' + identity.lastName}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label for="education">Education</label>
+                                <select
+                                        th:field="*{education}"
+                                        class="form-control"
+                                        id="education"
+                                        aria-describedby="educationHelp">
+                                    <option
+                                            th:each="education : ${educationList}"
+                                            th:value="${education.getId()}"
+                                            th:text="${education.getInstitution()}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label for="summary">Summary</label>
+                                <textarea
+                                        th:field="*{summary}"
+                                        class="form-control"
+                                        id="summary"
+                                        aria-describedby="summaryHelp"
+                                        rows="3"
+                                ></textarea>
+                            </div>
+                        </div>
+<!--                        <div class="row">-->
+<!--                            <div class="form-group col-8">-->
+<!--                                <label class="mr-3">Active:</label>-->
+<!--                                <div class="form-check form-check-inline align-top">-->
+<!--                                    <form:radiobutton-->
+<!--                                            path="active"-->
+<!--                                            class="form-check-input"-->
+<!--                                            id="inlineRadioTrue"-->
+<!--                                            value="true"-->
+<!--                                    />-->
+<!--                                    <label class="form-check-label" for="inlineRadioTrue">True</label>-->
+<!--                                </div>-->
+<!--                                <div class="form-check form-check-inline align-top">-->
+<!--                                    <form:radiobutton-->
+<!--                                            path="active"-->
+<!--                                            class="form-check-input"-->
+<!--                                            id="inlineRadioFalse"-->
+<!--                                            value="false"-->
+<!--                                            checked="checked"-->
+<!--                                    />-->
+<!--                                    <label class="form-check-label" for="inlineRadioFalse">False</label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row">-->
+<!--                            <div class="form-group col-8">-->
+<!--                                <button-->
+<!--                                        class="btn btn-secondary btn-sm"-->
+<!--                                        onclick="location.href='${listIdentity}'"-->
+<!--                                        type="button">Cancel-->
+<!--                                </button>-->
+<!--                                <button-->
+<!--                                        class="btn btn-primary btn-sm"-->
+<!--                                >Next-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
