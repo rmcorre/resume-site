@@ -48,7 +48,6 @@ public class PortfolioCtrl {
 
         List<Industry> industryList = industryDAO.findAll();
         List<Role> roleList = roleDAO.findAll();
-
         List<Identity>  identityList = identityDAO.findAll();
         List<Education> educationList = educationDAO.findAll();
 
