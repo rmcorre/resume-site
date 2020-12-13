@@ -1,6 +1,7 @@
 package org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio;
 
 import org.academiadecodigo.codezillas.portfolioApp.PortfolioApplication;
+import org.academiadecodigo.codezillas.portfolioApp.dao.industry.IndustryDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.education.EducationDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.identity.IdentityDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.portfolio.PortfolioDAO;
@@ -21,6 +22,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PortfolioTest {
 
     @Autowired
+    private IndustryDAO categoryDAO;
+
+    @Autowired
     private IdentityDAO identityDAO;
 
     @Autowired
@@ -33,10 +37,17 @@ public class PortfolioTest {
     @Test
     @Transactional
     @DirtiesContext
-    public void saveNewPortfolioAndNewIdentity() {
+    public void saveNewPortfolioNewCategoryAndNewIdentity() {
         Portfolio portfolio = new Portfolio();
-        portfolio.setCategory("Management");
         portfolio.setSpecialization("Food and Beverage");
+
+        Industry industry = new Industry();
+        industry.setId(1);
+        industry.setVersion(0);
+        industry.setCreationTime(new Date());
+        industry.setUpdateTime(new Date());
+        industry.setIndustry("Development");
+        categoryDAO.saveOrUpdate(industry);
 
         Identity identity = new Identity();
         identity.setId(5);
@@ -49,27 +60,33 @@ public class PortfolioTest {
         identity.setPhone("780 426 1024");
         identityDAO.saveOrUpdate(identity);
 
+        Industry savedIndustry = categoryDAO.find(1);
         Identity savedIdentity = identityDAO.find(5);
+        portfolio.addIndustry(savedIndustry);
         portfolio.addIdentity(savedIdentity);
         portfolioDAO.saveOrUpdate(portfolio);
 
         Portfolio savedPortfolio = portfolioDAO.find(4);
 
         assertEquals(4, savedPortfolio.getId());
+        assertEquals(1, savedPortfolio.getIndustryList().get(0).getId());
         assertEquals(5, savedPortfolio.getIdentityList().get(0).getId());
     }
 
     @Test
     @Transactional
     @DirtiesContext
-    public void saveNewPortfolioAndSelectedIdentity() {
+    public void saveNewPortfolioSelectedCategoryAndSelectedIdentity() {
         Portfolio portfolio = new Portfolio();
-        portfolio.setCategory("Management");
         portfolio.setSpecialization("Food and Beverage");
 
+        List<Industry> categories = categoryDAO.findAll();
         List<Identity> identities = identityDAO.findAll();
+
+        Industry selectedIndustry = categories.get(0);
         Identity selectedIdentity = identities.get(0);
 
+        portfolio.addIndustry(selectedIndustry);
         portfolio.addIdentity(selectedIdentity);
         portfolioDAO.saveOrUpdate(portfolio);
 
@@ -77,6 +94,7 @@ public class PortfolioTest {
 
         assertEquals(4, savedPortfolio.getId());
         assertEquals(1, savedPortfolio.getIdentityList().get(0).getId());
+        assertEquals(1, savedPortfolio.getIndustryList().get(0).getId());
     }
 
     @Test
@@ -93,10 +111,28 @@ public class PortfolioTest {
     @Test
     @Transactional
     @DirtiesContext
-    public void saveNewPortfolioNewIdentityAndNewEducation() {
+    public void deletePortfolioIndustryFromIndustryList() {
+        Portfolio portfolio = portfolioDAO.find(1);
+        Industry industry = portfolio.getIndustryList().get(0);
+        portfolio.getIndustryList().remove(industry);
+
+        assertEquals(1, portfolio.getIndustryList().size());
+    }
+
+    @Test
+    @Transactional
+    @DirtiesContext
+    public void saveNewPortfolioNewIdentityNewEducationAndNewCategory() {
         Portfolio portfolio = new Portfolio();
-        portfolio.setCategory("Management");
         portfolio.setSpecialization("Food and Beverage");
+
+        Industry industry = new Industry();
+        industry.setId(1);
+        industry.setVersion(0);
+        industry.setCreationTime(new Date());
+        industry.setUpdateTime(new Date());
+        industry.setIndustry("Development");
+        categoryDAO.saveOrUpdate(industry);
 
         Identity identity = new Identity();
         identity.setId(5);
@@ -118,6 +154,9 @@ public class PortfolioTest {
         education.setCourse("High School Diploma");
         educationDAO.saveOrUpdate(education);
 
+        Industry savedIndustry = categoryDAO.find(1);
+        portfolio.addIndustry(savedIndustry);
+
         Identity savedIdentity = identityDAO.find(5);
         portfolio.addIdentity(savedIdentity);
 
@@ -129,6 +168,7 @@ public class PortfolioTest {
         Portfolio savedPortfolio = portfolioDAO.find(4);
 
         assertEquals(4, savedPortfolio.getId());
+        assertEquals(1, savedPortfolio.getIndustryList().get(0).getId());
         assertEquals(5, savedPortfolio.getIdentityList().get(0).getId());
         assertEquals(3, savedPortfolio.getEducationList().get(0).getId());
     }
@@ -136,10 +176,12 @@ public class PortfolioTest {
     @Test
     @Transactional
     @DirtiesContext
-    public void saveNewPortfolioSelectedIdentityAndSelectedEducation() {
+    public void saveNewPortfolioSelectedCategorySelectedIdentityAndSelectedEducation() {
         Portfolio portfolio = new Portfolio();
-        portfolio.setCategory("Management");
         portfolio.setSpecialization("Food and Beverage");
+
+        List<Industry> categories = categoryDAO.findAll();
+        Industry selectedIndustry = categories.get(0);
 
         List<Identity> identities = identityDAO.findAll();
         Identity selectedIdentity = identities.get(0);
@@ -147,6 +189,7 @@ public class PortfolioTest {
         List<Education> educations = educationDAO.findAll();
         Education selectedEducation = educations.get(0);
 
+        portfolio.addIndustry(selectedIndustry);
         portfolio.addIdentity(selectedIdentity);
         portfolio.addEducation(selectedEducation);
         portfolioDAO.saveOrUpdate(portfolio);
@@ -154,6 +197,7 @@ public class PortfolioTest {
         Portfolio savedPortfolio = portfolioDAO.find(4);
 
         assertEquals(4, savedPortfolio.getId());
+        assertEquals(1, savedPortfolio.getIndustryList().get(0).getId());
         assertEquals(1, savedPortfolio.getIdentityList().get(0).getId());
         assertEquals(1, savedPortfolio.getEducationList().get(0).getId());
     }

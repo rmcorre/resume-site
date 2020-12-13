@@ -2,7 +2,7 @@ package org.academiadecodigo.codezillas.portfolioApp.dto;
 
 public class PortfolioDTO {
 
-    private String category;
+    private String industry;
 
     private String specialization;
 
@@ -14,12 +14,12 @@ public class PortfolioDTO {
 
     private Boolean active;
 
-    public String getCategory() {
-        return category;
+    public String getIndustry() {
+        return industry;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setIndustry(String industry) {
+        this.industry = industry;
     }
 
     public String getSpecialization() {
