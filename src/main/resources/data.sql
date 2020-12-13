@@ -1,3 +1,18 @@
+insert into industry (id, version, creation_time, update_time, industry)
+values (1, 0, current_timestamp, current_timestamp, 'Software Development');
+
+insert into industry (id, version, creation_time, update_time, industry)
+values (2, 0, current_timestamp, current_timestamp, 'Hospitality');
+
+insert into role (id, version, creation_time, update_time, role)
+values (1, 0, current_timestamp, current_timestamp, 'Fullstack Developer');
+
+insert into role (id, version, creation_time, update_time, role)
+values (2, 0, current_timestamp, current_timestamp, 'Frontend Developer');
+
+insert into role (id, version, creation_time, update_time, role)
+values (3, 0, current_timestamp, current_timestamp, 'Backend Developer');
+
 insert into identity (id, version, creation_time, update_time, first_name, last_name, email, phone)
 values (1, 0, current_timestamp, current_timestamp, 'Horacio', 'Correia', 'rmcorre@gmail.com', '91 421 3861');
 
@@ -40,23 +55,21 @@ insert into address (
 values (4, 0, current_timestamp, current_timestamp,
         'Education', null, 'Rua de Jesus', null, 'Praia de Vitoria', null, null, 'Terceira', 'Azores', '9000-000', null, 2);
 
-insert into industry (id, version, creation_time, update_time, industry)
-values (1, 0, current_timestamp, current_timestamp, 'Software Development');
+insert into portfolio (id, version, creation_time, update_time)
+values (1, 0, current_timestamp, current_timestamp);
 
-insert into industry (id, version, creation_time, update_time, industry)
-values (2, 0, current_timestamp, current_timestamp, 'Hospitality');
+insert into portfolio (id, version, creation_time, update_time)
+values (2, 0, current_timestamp, current_timestamp);
 
-insert into portfolio (id, version, creation_time, update_time, specialization)
-values (1, 0, current_timestamp, current_timestamp, 'Full Stack Developer');
-
-insert into portfolio (id, version, creation_time, update_time, specialization)
-values (2, 0, current_timestamp, current_timestamp, 'Front End Developer');
-
-insert into portfolio (id, version, creation_time, update_time, specialization)
-values (3, 0, current_timestamp, current_timestamp, 'Back End Developer');
+insert into portfolio (id, version, creation_time, update_time)
+values (3, 0, current_timestamp, current_timestamp);
 
 insert into portfolio_industry (portfolio_id, industry_id) values (1, 1);
 insert into portfolio_industry (portfolio_id, industry_id) values (1, 2);
+
+insert into portfolio_role (portfolio_id, role_id) values (1, 1);
+insert into portfolio_role (portfolio_id, role_id) values (1, 2);
+insert into portfolio_role (portfolio_id, role_id) values (1, 3);
 
 insert into portfolio_identity (portfolio_id, identity_id) values (1, 1);
 insert into portfolio_identity (portfolio_id, identity_id) values (1, 2);
