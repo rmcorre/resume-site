@@ -1,6 +1,7 @@
-package org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio;
+package org.academiadecodigo.codezillas.portfolioApp.domainModel.industry;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio.Portfolio;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;

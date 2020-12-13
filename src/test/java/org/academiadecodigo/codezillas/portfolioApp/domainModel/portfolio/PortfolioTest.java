@@ -7,6 +7,7 @@ import org.academiadecodigo.codezillas.portfolioApp.dao.identity.IdentityDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.portfolio.PortfolioDAO;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.education.Education;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.industry.Industry;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -39,7 +40,7 @@ public class PortfolioTest {
     @DirtiesContext
     public void saveNewPortfolioNewCategoryAndNewIdentity() {
         Portfolio portfolio = new Portfolio();
-        portfolio.setSpecialization("Food and Beverage");
+//        portfolio.setSpecialization("Food and Beverage");
 
         Industry industry = new Industry();
         industry.setId(1);
@@ -78,7 +79,7 @@ public class PortfolioTest {
     @DirtiesContext
     public void saveNewPortfolioSelectedCategoryAndSelectedIdentity() {
         Portfolio portfolio = new Portfolio();
-        portfolio.setSpecialization("Food and Beverage");
+//        portfolio.setSpecialization("Food and Beverage");
 
         List<Industry> categories = categoryDAO.findAll();
         List<Identity> identities = identityDAO.findAll();
@@ -124,7 +125,7 @@ public class PortfolioTest {
     @DirtiesContext
     public void saveNewPortfolioNewIdentityNewEducationAndNewCategory() {
         Portfolio portfolio = new Portfolio();
-        portfolio.setSpecialization("Food and Beverage");
+//        portfolio.setSpecialization("Food and Beverage");
 
         Industry industry = new Industry();
         industry.setId(1);
@@ -178,7 +179,7 @@ public class PortfolioTest {
     @DirtiesContext
     public void saveNewPortfolioSelectedCategorySelectedIdentityAndSelectedEducation() {
         Portfolio portfolio = new Portfolio();
-        portfolio.setSpecialization("Food and Beverage");
+//        portfolio.setSpecialization("Food and Beverage");
 
         List<Industry> categories = categoryDAO.findAll();
         Industry selectedIndustry = categories.get(0);
