@@ -2,9 +2,11 @@ package org.academiadecodigo.codezillas.portfolioApp.controller;
 
 import org.academiadecodigo.codezillas.portfolioApp.dao.education.EducationDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.identity.IdentityDAO;
+import org.academiadecodigo.codezillas.portfolioApp.dao.industry.IndustryDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.portfolio.PortfolioDAO;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.education.Education;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio.Industry;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio.Portfolio;
 import org.academiadecodigo.codezillas.portfolioApp.dto.PortfolioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +27,14 @@ import java.util.Set;
 public class PortfolioCtrl {
 
     private final PortfolioDAO portfolioDAO;
-    private final EducationDAO educationDAO;
+    private final IndustryDAO industryDAO;
     private final IdentityDAO identityDAO;
+    private final EducationDAO educationDAO;
 
     @Autowired
-    public PortfolioCtrl(PortfolioDAO portfolioDAO, EducationDAO educationDAO, IdentityDAO identityDAO) {
+    public PortfolioCtrl(PortfolioDAO portfolioDAO, IndustryDAO industryDAO, EducationDAO educationDAO, IdentityDAO identityDAO) {
         this.portfolioDAO = portfolioDAO;
+        this.industryDAO = industryDAO;
         this.educationDAO = educationDAO;
         this.identityDAO = identityDAO;
     }
@@ -41,12 +45,9 @@ public class PortfolioCtrl {
         PortfolioDTO portfolioDTO = new PortfolioDTO();
         List<Portfolio> portfolioList = portfolioDAO.findAll();
 
-        Set<String> categorySet = new HashSet<>();
-        for (Portfolio portfolio : portfolioList) {
-            if (portfolio.getCategory() != null) {
-                categorySet.add(portfolio.getCategory());
-            }
-        }
+        List<Industry> industryList = industryDAO.findAll();
+
+
 
         Set<String> specializationSet = new HashSet<>();
         for (Portfolio portfolio : portfolioList) {
@@ -59,7 +60,7 @@ public class PortfolioCtrl {
         List<Education> educationList = educationDAO.findAll();
 
         model.addAttribute("portfolioDTO", portfolioDTO);
-        model.addAttribute("categorySet", categorySet);
+        model.addAttribute("industryList", industryList);
         model.addAttribute("specializationSet", specializationSet);
         model.addAttribute("identityList", identityList);
         model.addAttribute("educationList", educationList);

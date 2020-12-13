@@ -15,7 +15,13 @@ import java.util.Objects;
 @Entity
 public class Portfolio extends AbstractModel {
 
-    private String category;
+    @ManyToMany
+    @JoinTable(
+        name = "portfolio_industry",
+        joinColumns = @JoinColumn(name = "portfolio_id"),
+        inverseJoinColumns = @JoinColumn(name = "industry_id"))
+    private final List<Industry> industryList = new ArrayList<>();
+
     private String specialization;
     private String summary;
 
@@ -33,12 +39,16 @@ public class Portfolio extends AbstractModel {
             inverseJoinColumns = @JoinColumn(name = "education_id"))
     private final List<Education> educationList = new ArrayList<>();
 
-    public String getCategory() {
-        return category;
+    public List<Industry> getIndustryList() {
+        return industryList;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void addIndustry(Industry industry) {
+        industryList.add(industry);
+    }
+
+    public void removeIndustry(Industry industry) {
+        industryList.remove(industry);
     }
 
     public String getSpecialization() {
@@ -78,21 +88,18 @@ public class Portfolio extends AbstractModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Portfolio portfolio = (Portfolio) o;
-        return Objects.equals(category, portfolio.category) &&
-                Objects.equals(specialization, portfolio.specialization) &&
-                Objects.equals(summary, portfolio.summary);
+        return Objects.equals(specialization, portfolio.specialization) && Objects.equals(summary, portfolio.summary);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(category, specialization, summary);
+        return Objects.hash(specialization, summary);
     }
 
     @Override
     public String toString() {
         return "Portfolio{" +
-                "category='" + category + '\'' +
-                ", specialization='" + specialization + '\'' +
+                "specialization='" + specialization + '\'' +
                 ", summary='" + summary + '\'' +
                 "} " + super.toString();
     }
