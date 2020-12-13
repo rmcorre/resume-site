@@ -2,6 +2,7 @@ package org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.education.Education;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.role.Role;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.industry.Industry;
 
@@ -11,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Portfolio extends AbstractModel {
@@ -22,8 +24,12 @@ public class Portfolio extends AbstractModel {
         inverseJoinColumns = @JoinColumn(name = "industry_id"))
     private final List<Industry> industryList = new ArrayList<>();
 
-
-
+    @ManyToMany
+    @JoinTable(
+        name = "portfolio_role",
+        joinColumns = @JoinColumn(name = "portfolio_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private final List<Role> roleList = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
@@ -53,9 +59,17 @@ public class Portfolio extends AbstractModel {
         industryList.remove(industry);
     }
 
+    public List<Role> getRoleList() {
+        return roleList;
+    }
 
+    public void addRole(Role role) {
+        roleList.add(role);
+    }
 
-
+    public void removeRole(Role role) {
+        roleList.remove(role);
+    }
 
     public List<Identity> getIdentityList() {
         return identityList;
@@ -87,5 +101,25 @@ public class Portfolio extends AbstractModel {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Portfolio portfolio = (Portfolio) o;
+        return Objects.equals(summary, portfolio.summary);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(summary);
+    }
+
+    @Override
+    public String toString() {
+        return "Portfolio{" +
+                "summary='" + summary + '\'' +
+                "} " + super.toString();
     }
 }
