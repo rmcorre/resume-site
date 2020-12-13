@@ -3,6 +3,7 @@ package org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.education.Education;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.industry.Industry;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -10,7 +11,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Portfolio extends AbstractModel {
@@ -22,8 +22,8 @@ public class Portfolio extends AbstractModel {
         inverseJoinColumns = @JoinColumn(name = "industry_id"))
     private final List<Industry> industryList = new ArrayList<>();
 
-    private String specialization;
-    private String summary;
+
+
 
     @ManyToMany
     @JoinTable(
@@ -39,6 +39,8 @@ public class Portfolio extends AbstractModel {
             inverseJoinColumns = @JoinColumn(name = "education_id"))
     private final List<Education> educationList = new ArrayList<>();
 
+    private String summary;
+
     public List<Industry> getIndustryList() {
         return industryList;
     }
@@ -51,13 +53,9 @@ public class Portfolio extends AbstractModel {
         industryList.remove(industry);
     }
 
-    public String getSpecialization() {
-        return specialization;
-    }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
-    }
+
+
 
     public List<Identity> getIdentityList() {
         return identityList;
@@ -83,24 +81,11 @@ public class Portfolio extends AbstractModel {
         educationList.remove(education);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Portfolio portfolio = (Portfolio) o;
-        return Objects.equals(specialization, portfolio.specialization) && Objects.equals(summary, portfolio.summary);
+    public String getSummary() {
+        return summary;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(specialization, summary);
-    }
-
-    @Override
-    public String toString() {
-        return "Portfolio{" +
-                "specialization='" + specialization + '\'' +
-                ", summary='" + summary + '\'' +
-                "} " + super.toString();
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 }

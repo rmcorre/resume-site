@@ -1,7 +1,7 @@
 package org.academiadecodigo.codezillas.portfolioApp.dao.industry;
 
 import org.academiadecodigo.codezillas.portfolioApp.dao.GenericDAO;
-import org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio.Industry;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.industry.Industry;
 import org.springframework.stereotype.Repository;
 
 @Repository

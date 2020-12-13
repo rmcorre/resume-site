@@ -6,7 +6,7 @@ import org.academiadecodigo.codezillas.portfolioApp.dao.industry.IndustryDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.portfolio.PortfolioDAO;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.education.Education;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
-import org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio.Industry;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.industry.Industry;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio.Portfolio;
 import org.academiadecodigo.codezillas.portfolioApp.dto.PortfolioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("portfolio")
@@ -48,20 +45,12 @@ public class PortfolioCtrl {
         List<Industry> industryList = industryDAO.findAll();
 
 
-
-        Set<String> specializationSet = new HashSet<>();
-        for (Portfolio portfolio : portfolioList) {
-            if (portfolio.getSpecialization() != null) {
-                specializationSet.add(portfolio.getSpecialization());
-            }
-        }
-
         List<Identity>  identityList = identityDAO.findAll();
         List<Education> educationList = educationDAO.findAll();
 
         model.addAttribute("portfolioDTO", portfolioDTO);
         model.addAttribute("industryList", industryList);
-        model.addAttribute("specializationSet", specializationSet);
+//        model.addAttribute("specializationSet", specializationSet);
         model.addAttribute("identityList", identityList);
         model.addAttribute("educationList", educationList);
         return "portfolio/create";
