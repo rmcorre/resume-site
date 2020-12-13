@@ -54,7 +54,7 @@ public class PortfolioCtrl {
 
         model.addAttribute("portfolioDTO", portfolioDTO);
         model.addAttribute("industryList", industryList);
-        model.addAttribute("functionList", roleList);
+        model.addAttribute("roleList", roleList);
         model.addAttribute("identityList", identityList);
         model.addAttribute("educationList", educationList);
         return "portfolio/create";

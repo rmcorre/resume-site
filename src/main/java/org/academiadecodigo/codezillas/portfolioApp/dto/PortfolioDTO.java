@@ -4,7 +4,7 @@ public class PortfolioDTO {
 
     private String industry;
 
-    private String specialization;
+    private String role;
 
     private String summary;
 
@@ -22,12 +22,12 @@ public class PortfolioDTO {
         this.industry = industry;
     }
 
-    public String getSpecialization() {
-        return specialization;
+    public String getRole() {
+        return role;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getSummary() {

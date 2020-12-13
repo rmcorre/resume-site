@@ -27,7 +27,7 @@
                                         class="form-control"
                                         type="text"
                                         id="industry"
-                                        aria-describedby="categoryHelp">
+                                        aria-describedby="industryHelp">
                                     <option
                                             th:each="industry : ${industryList}"
                                             th:value="${industry.getId()}"
@@ -38,17 +38,17 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-4">
-                                <label for="specialization">Specialization</label>
+                                <label for="role">Role</label>
                                 <select
-                                        th:field="*{specialization}"
+                                        th:field="*{role}"
                                         class="form-control"
                                         type="text"
-                                        id="specialization"
-                                        aria-describedby="specializationHelp">
+                                        id="role"
+                                        aria-describedby="roleHelp">
                                     <option
-                                            th:each="specialization : ${specializationSet}"
-                                            th:value="${specialization.toString()}"
-                                            th:text="${specialization.toString()}">
+                                            th:each="role : ${roleList}"
+                                            th:value="${role.getId()}"
+                                            th:text="${role.getRole()}">
                                     </option>
                                 </select>
                             </div>
