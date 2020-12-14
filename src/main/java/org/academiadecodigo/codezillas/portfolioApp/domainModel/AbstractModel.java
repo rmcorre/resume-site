@@ -1,9 +1,9 @@
 package org.academiadecodigo.codezillas.portfolioApp.domainModel;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
@@ -12,8 +12,14 @@ public class AbstractModel implements Model{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Version
     private Integer version;
+
+    @CreationTimestamp
     private Date creationTime;
+
+    @UpdateTimestamp
     private Date updateTime;
 
 //    public AbstractModel() {

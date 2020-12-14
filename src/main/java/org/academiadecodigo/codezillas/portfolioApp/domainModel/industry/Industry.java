@@ -35,4 +35,6 @@ public class Industry extends AbstractModel {
     public void removePortfolio(Portfolio portfolio) {
         portfolioList.remove(portfolio);
     }
+
+
 }
