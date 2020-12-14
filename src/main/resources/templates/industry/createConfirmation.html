@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/header">
+    <title>Create Confirmation</title>
+</head>
+<body class="bg-light h-100">
+    <div class="container pt-3">
+        <div class="row">
+            <div class="col-md-8 pb-3">
+                <h3 class="text-secondary">Create Confirmation</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 pb-3">
+                <p th:text="${industry.getId()}">1</p>
+                <p th:text="${industry.getVersion()}">1</p>
+                <p th:text="${industry.getCreationTime()}">1</p>
+                <p th:text="${industry.getUpdateTime()}">1</p>
+                <p th:text="${industry.getIndustry()}">Industry</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
