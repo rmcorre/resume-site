@@ -17,23 +17,32 @@
                     th:action = "@{/portfolio/processPortfolio}"
                     th:object = "${portfolioDTO}"
                     method="post">
-
+                    <!-- Had to change from "th:field=${industry}" to "name=industry" to be able to use
+                        selected attribute. This may cause a problem with the processPortfolio method in
+                        the PortfolioCtrl -->
                     <div class="form-group">
                         <label class="d-flex" for="industry">Industry</label>
                         <div class="d-flex">
                             <select
-                                th:field="*{industry}"
+                                name="industry"
                                 class="form-control"
                                 type="text"
                                 id="industry"
                                 aria-describedby="industryHelp">
                                 <option
-                                        th:each="industry : ${industryList}"
-                                        th:value="${industry.getId()}"
-                                        th:text="${industry.getIndustry()}">
+                                        th:selected="(${choice.getId()} == ${#request.getParameter('savedIndustryId')})"
+                                        th:each="choice : ${industryList}"
+                                        th:value="${choice.getId()}"
+                                        th:text="${choice.getIndustry()}">
                                 </option>
                             </select>
-                            <button class="btn btn-secondary btn-sm ml-2 my-1">New</button>
+                            <a th:href="@{/industry/create}">
+                                <button
+                                        class="btn btn-secondary btn-sm ml-2 my-1"
+                                        type="button"
+                                >New
+                                </button>
+                            </a>
                         </div>
                     </div>
                     <div class="form-group">
@@ -45,6 +54,7 @@
                                     type="text"
                                     id="role"
                                     aria-describedby="roleHelp">
+                                <option value=" ">Select a role</option>
                                 <option
                                         th:each="role : ${roleList}"
                                         th:value="${role.getId()}"
@@ -62,6 +72,7 @@
                                     class="form-control"
                                     id="identity"
                                     aria-describedby="identityHelp">
+                                <option value=" ">Select an identity</option>
                                 <option
                                         th:each="identity : ${identityList}"
                                         th:value="${identity.getId()}"
@@ -79,6 +90,7 @@
                                     class="form-control"
                                     id="education"
                                     aria-describedby="educationHelp">
+                                <option value=" ">Select an education</option>
                                 <option
                                         th:each="education : ${educationList}"
                                         th:value="${education.getId()}"

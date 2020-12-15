@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/industry")
-@SessionAttributes({"industry"})
+@SessionAttributes({"newIndustry"})
 public class IndustryCtrl {
 
     private final IndustryDAO industryDAO;
@@ -23,29 +23,29 @@ public class IndustryCtrl {
     @GetMapping("/create")
     public String create(Model model) {
 
-        Industry industry = new Industry();
+        Industry newIndustry = new Industry();
 
-        model.addAttribute("industry", industry);
+        model.addAttribute("newIndustry", newIndustry);
         return "industry/create";
     }
 
-    @PostMapping("/process")
+    @PostMapping("/showPortfolioCreate")
     public String process(
-            Industry industry,
+            Industry newIndustry,
             RedirectAttributes redirectAttributes) {
 
-        Industry industry1 = industryDAO.saveOrUpdate(industry);
+        Industry savedIndustry = industryDAO.saveOrUpdate(newIndustry);
 
-        redirectAttributes.addAttribute("industryId", industry1.getId());
-        return "redirect:/industry/createConfirmation";
+        redirectAttributes.addAttribute("savedIndustryId", savedIndustry.getId());
+        return "redirect:/portfolio/create";
     }
     
     @GetMapping("/createConfirmation")
     public String createConfirmation(
-            @RequestParam("industryId") Integer industryId,
+            @RequestParam("id") Integer id,
             Model model) {
 
-        Industry retrievedIndustry = industryDAO.find(industryId);
+        Industry retrievedIndustry = industryDAO.find(id);
 
         model.addAttribute("industry", retrievedIndustry);
         return "industry/createConfirmation";
