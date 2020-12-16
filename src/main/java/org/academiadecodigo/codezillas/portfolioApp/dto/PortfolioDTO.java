@@ -2,31 +2,31 @@ package org.academiadecodigo.codezillas.portfolioApp.dto;
 
 public class PortfolioDTO {
 
-    private String industry;
+    private Integer industry;
 
-    private String role;
-
-    private String summary;
+    private Integer role;
 
     private Integer identity;
 
     private Integer education;
 
+    private String summary;
+
     private Boolean active;
 
-    public String getIndustry() {
+    public Integer getIndustry() {
         return industry;
     }
 
-    public void setIndustry(String industry) {
+    public void setIndustry(Integer industry) {
         this.industry = industry;
     }
 
-    public String getRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 
