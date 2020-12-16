@@ -1,20 +1,21 @@
 package org.academiadecodigo.codezillas.portfolioApp.controller;
 
 import org.academiadecodigo.codezillas.portfolioApp.dao.education.EducationDAO;
-import org.academiadecodigo.codezillas.portfolioApp.dao.role.RoleDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.identity.IdentityDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.industry.IndustryDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.portfolio.PortfolioDAO;
+import org.academiadecodigo.codezillas.portfolioApp.dao.role.RoleDAO;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.education.Education;
-import org.academiadecodigo.codezillas.portfolioApp.domainModel.role.Role;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.industry.Industry;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio.Portfolio;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.role.Role;
 import org.academiadecodigo.codezillas.portfolioApp.dto.PortfolioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -22,7 +23,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("portfolio")
-@SessionAttributes()
+@SessionAttributes({"portfolioDTO"})
 public class PortfolioCtrl {
 
     private final PortfolioDAO portfolioDAO;
@@ -58,4 +59,26 @@ public class PortfolioCtrl {
         model.addAttribute("educationList", educationList);
         return "portfolio/create";
     }
+
+    @PostMapping("/process")
+    public String process(
+            PortfolioDTO portfolioDTO) {
+
+        Portfolio portfolio = new Portfolio();
+        Industry industry = industryDAO.find(portfolioDTO.getIndustry());
+
+        portfolio.addIndustry(industry);
+        Portfolio savedPortfolio = portfolioDAO.saveOrUpdate(portfolio);
+
+        System.out.println(savedPortfolio.getIndustryList().get(0));
+
+        return "redirect:/portfolio/createConfirmation";
+    }
+
+    @GetMapping("/createConfirmation")
+    public String createConfirmation() {
+
+        return "portfolio/createConfirmation";
+    }
+
 }

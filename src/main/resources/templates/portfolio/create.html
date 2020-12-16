@@ -14,7 +14,7 @@
             <div class="col-md-8">
                 <form
                     action="#"
-                    th:action = "@{/portfolio/processPortfolio}"
+                    th:action = "@{/portfolio/process}"
                     th:object = "${portfolioDTO}"
                     method="post">
                     <!-- Had to change from "th:field=${industry}" to "name=industry" to be able to use
@@ -39,8 +39,7 @@
                             <a th:href="@{/industry/create}">
                                 <button
                                         class="btn btn-secondary btn-sm ml-2 my-1"
-                                        type="button"
-                                >New
+                                        type="button">New
                                 </button>
                             </a>
                         </div>
@@ -135,19 +134,19 @@
 <!--                                </div>-->
 <!--                            </div>-->
 <!--                        </div>-->
-<!--                        <div class="row">-->
-<!--                            <div class="form-group col-8">-->
+                        <div class="row">
+                            <div class="form-group col-8">
 <!--                                <button-->
 <!--                                        class="btn btn-secondary btn-sm"-->
 <!--                                        onclick="location.href='${listIdentity}'"-->
 <!--                                        type="button">Cancel-->
 <!--                                </button>-->
-<!--                                <button-->
-<!--                                        class="btn btn-primary btn-sm"-->
-<!--                                >Next-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                                <button
+                                        class="btn btn-primary btn-sm"
+                                >Submit
+                                </button>
+                            </div>
+                        </div>
                 </form>
             </div>
         </div>
