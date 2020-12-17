@@ -1,15 +1,19 @@
 package org.academiadecodigo.codezillas.portfolioApp.controller;
 
 import org.academiadecodigo.codezillas.portfolioApp.dao.role.RoleDAO;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.role.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/role")
-@SessionAttributes({})
+@SessionAttributes({"newRole"})
 public class RoleCtrl {
 
     private final RoleDAO roleDAO;
@@ -17,6 +21,26 @@ public class RoleCtrl {
     @Autowired
     public RoleCtrl(RoleDAO roleDAO) {
         this.roleDAO = roleDAO;
+    }
+
+    @GetMapping("/create")
+    public String create(Model model) {
+
+        Role newRole = new Role();
+
+        model.addAttribute("newRole", newRole);
+        return "role/create";
+    }
+
+    @PostMapping("/showPortfolioCreate")
+    public String showPortfolioCreate(
+            Role newRole,
+            RedirectAttributes redirectAttributes) {
+
+        Role savedRole = roleDAO.saveOrUpdate(newRole);
+
+        redirectAttributes.addAttribute("id", savedRole.getId());
+        return "redirect:/portfolio/create";
     }
 
 }
