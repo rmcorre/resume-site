@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/head :: head('Create an industry')">
+    <head th:replace="fragments/head :: head('Create a portfolio role')">
     </head>
     <body class="bg-light h-100">
         <div class="container pt-3">
             <div class="row">
                 <div class="col-md-8 pb-3">
-                    <h3 class="text-secondary">Create Industry</h3>
+                    <h3 class="text-secondary">Create Role</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-8">
                     <form
-                        action="#"
-                        th:action = "@{/industry/showPortfolioCreate}"
-                        th:object = "${newIndustry}"
-                        method="post">
+                            th:action="@{/role/showPortfolioCreate}"
+                            th:object="${newRole}"
+                            method="post">
 
                         <div class="form-group">
-                            <label class="d-flex" for="industry">Industry</label>
+                            <label class="d-flex" for="role"></label>
                             <input
-                                th:field="*{industry}"
+                                th:field="*{role}"
                                 class="form-control"
                                 type="text"
-                                id="industry"
-                                aria-describedby="industryHelp"
-                            >
+                                id="role"
+                                aria-describedby="roleHelp">
                         </div>
                         <button class="btn btn-secondary btn-sm" type="submit">Create</button>
                     </form>
