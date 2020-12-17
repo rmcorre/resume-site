@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/header">
-    <title>Create Portfolio</title>
+<head th:replace="fragments/head :: head('Create a portfolio')">
 </head>
 <body class="bg-light h-100">
     <div class="container pt-3">
@@ -48,19 +47,25 @@
                         <label class="d-flex" for="role">Role</label>
                         <div class="d-flex">
                             <select
-                                    th:field="*{role}"
+                                    name="role"
                                     class="form-control"
                                     type="text"
                                     id="role"
                                     aria-describedby="roleHelp">
                                 <option value=" ">Select a role</option>
                                 <option
-                                        th:each="role : ${roleList}"
-                                        th:value="${role.getId()}"
-                                        th:text="${role.getRole()}">
+                                        th:selected="(${choice.getId()} == ${#request.getParameter('id')})"
+                                        th:each="choice : ${roleList}"
+                                        th:value="${choice.getId()}"
+                                        th:text="${choice.getRole()}">
                                 </option>
                             </select>
-                            <button class="btn btn-secondary btn-sm ml-2 my-1">New</button>
+                            <a th:href="@{/role/create}">
+                                <button
+                                        class="btn btn-secondary btn-sm ml-2 my-1"
+                                        type="button">New
+                                </button>
+                            </a>
                         </div>
                     </div>
                     <div class="form-group">
