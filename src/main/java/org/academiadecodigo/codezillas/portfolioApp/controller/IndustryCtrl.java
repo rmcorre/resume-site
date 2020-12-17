@@ -30,7 +30,7 @@ public class IndustryCtrl {
     }
 
     @PostMapping("/showPortfolioCreate")
-    public String process(
+    public String showPortfolioCreate(
             Industry newIndustry,
             RedirectAttributes redirectAttributes) {
 
