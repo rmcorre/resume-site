@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -42,7 +43,7 @@ public class PortfolioCtrl {
     }
 
     @GetMapping("/create")
-    public String create(Model model) {
+    public String create(Model model, HttpSession httpSession) {
 
         PortfolioDTO portfolioDTO = new PortfolioDTO();
         List<Portfolio> portfolioList = portfolioDAO.findAll();
@@ -57,6 +58,8 @@ public class PortfolioCtrl {
         model.addAttribute("roleList", roleList);
         model.addAttribute("identityList", identityList);
         model.addAttribute("educationList", educationList);
+        model.addAttribute("savedRole", httpSession.getAttribute("savedRole"));
+        model.addAttribute("savedIndustry", httpSession.getAttribute("savedIndustry"));
         return "portfolio/create";
     }
 

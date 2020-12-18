@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/industry")
 @SessionAttributes({"newIndustry"})
@@ -32,11 +34,11 @@ public class IndustryCtrl {
     @PostMapping("/showPortfolioCreate")
     public String showPortfolioCreate(
             Industry newIndustry,
-            RedirectAttributes redirectAttributes) {
+            HttpSession httpSession) {
 
         Industry savedIndustry = industryDAO.saveOrUpdate(newIndustry);
+        httpSession.setAttribute("savedIndustry", savedIndustry.getIndustry());
 
-        redirectAttributes.addAttribute("savedIndustryId", savedIndustry.getId());
         return "redirect:/portfolio/create";
     }
     

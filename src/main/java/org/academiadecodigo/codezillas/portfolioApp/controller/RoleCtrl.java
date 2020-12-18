@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/role")
 @SessionAttributes({"newRole"})
@@ -35,11 +37,11 @@ public class RoleCtrl {
     @PostMapping("/showPortfolioCreate")
     public String showPortfolioCreate(
             Role newRole,
-            RedirectAttributes redirectAttributes) {
+            HttpSession httpSession) {
 
         Role savedRole = roleDAO.saveOrUpdate(newRole);
+        httpSession.setAttribute("savedRole", savedRole.getRole());
 
-        redirectAttributes.addAttribute("id", savedRole.getId());
         return "redirect:/portfolio/create";
     }
 
