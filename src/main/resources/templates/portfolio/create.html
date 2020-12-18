@@ -29,7 +29,7 @@
                                 id="industry"
                                 aria-describedby="industryHelp">
                                 <option
-                                        th:selected="(${choice.getId()} == ${#request.getParameter('savedIndustryId')})"
+                                        th:selected="${savedIndustry}"
                                         th:each="choice : ${industryList}"
                                         th:value="${choice.getId()}"
                                         th:text="${choice.getIndustry()}">
@@ -54,7 +54,7 @@
                                     aria-describedby="roleHelp">
                                 <option value=" ">Select a role</option>
                                 <option
-                                        th:selected="(${choice.getId()} == ${#request.getParameter('id')})"
+                                        th:selected="${savedRole}"
                                         th:each="choice : ${roleList}"
                                         th:value="${choice.getId()}"
                                         th:text="${choice.getRole()}">
