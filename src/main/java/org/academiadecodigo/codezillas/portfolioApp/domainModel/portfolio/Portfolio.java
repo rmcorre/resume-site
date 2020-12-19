@@ -2,6 +2,7 @@ package org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio;
 
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.AbstractModel;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.education.Education;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.education.EducationGroup;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.role.Role;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.industry.Industry;
@@ -40,10 +41,10 @@ public class Portfolio extends AbstractModel {
 
     @ManyToMany
     @JoinTable(
-            name = "portfolio_education",
+            name = "portfolio_educationgroup",
             joinColumns = @JoinColumn(name = "portfolio_id"),
-            inverseJoinColumns = @JoinColumn(name = "education_id"))
-    private final List<Education> educationList = new ArrayList<>();
+            inverseJoinColumns = @JoinColumn(name = "educationgroup_id"))
+    private final List<EducationGroup> educationGroupList = new ArrayList<>();
 
     private String summary;
 
@@ -83,16 +84,16 @@ public class Portfolio extends AbstractModel {
         identityList.remove(identity);
     }
 
-    public List<Education> getEducationList() {
-        return educationList;
+    public List<EducationGroup> getEducationGroupList() {
+        return educationGroupList;
     }
 
-    public void addEducation(Education education) {
-        educationList.add(education);
+    public void addEducationGroup(EducationGroup educationGroup) {
+        educationGroupList.add(educationGroup);
     }
 
-    public void removeEduction(Education education) {
-        educationList.remove(education);
+    public void removeEductionGroup(EducationGroup educationGroup) {
+        educationGroupList.remove(educationGroup);
     }
 
     public String getSummary() {

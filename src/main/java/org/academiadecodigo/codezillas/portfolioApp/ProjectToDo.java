@@ -3,7 +3,6 @@ package org.academiadecodigo.codezillas.portfolioApp;
 public class ProjectToDo {
 
     //Todo:
-    //  4. Modify PortfolioCtrl process method to add submitted role to portfolio
 
     /* POSSIBLE SOLUTION TO RETAIN FORM VALUES AFTER SUBMIT
        https://stackoverflow.com/questions/33208581/how-to-keep-text-value-as-it-is-after-submit-button-is-clicked

@@ -43,6 +43,12 @@ values (1, 0, current_timestamp, current_timestamp, 'Concordia College Universit
 insert into education (id, version, creation_time, update_time, institution, course, start_date, end_date)
 values (2, 0, current_timestamp, current_timestamp, 'Academia De Codigo', 'Full Stack Developer', 'May 2019', 'Aug 2019');
 
+insert into education_group (id, version, creation_time, update_time, group_name)
+values (1, 0, current_timestamp, current_timestamp, 'All');
+
+insert into education_group (id, version, creation_time, update_time, group_name)
+values (2, 0, current_timestamp, current_timestamp, 'Developer');
+
 insert into address (
     id, version, creation_time, update_time, subject, num, address, parish, town_city, county, state_province,
     island, country_region, postal_code, identity_id, education_id)
@@ -76,5 +82,12 @@ insert into portfolio_identity (portfolio_id, identity_id) values (1, 2);
 insert into portfolio_identity (portfolio_id, identity_id) values (2, 3);
 insert into portfolio_identity (portfolio_id, identity_id) values (3, 4);
 
-insert into portfolio_education (portfolio_id, education_id) values (1, 1);
-insert into portfolio_education (portfolio_id, education_id) values (1, 2);
+-- insert into portfolio_education (portfolio_id, education_id) values (1, 1);
+-- insert into portfolio_education (portfolio_id, education_id) values (1, 2);
+
+insert into educationgroup_education (educationgroup_id, education_id) values (1, 1);
+insert into educationgroup_education (educationgroup_id, education_id) values (1, 2);
+insert into educationgroup_education (educationgroup_id, education_id) values (2, 1);
+
+insert into portfolio_educationgroup (portfolio_id, educationgroup_id) values (1, 1);
+insert into portfolio_educationgroup (portfolio_id, educationgroup_id) values (2, 2);

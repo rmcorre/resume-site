@@ -96,9 +96,9 @@
                                     aria-describedby="educationHelp">
                                 <option value=" ">Select an education</option>
                                 <option
-                                        th:each="education : ${educationList}"
-                                        th:value="${education.getId()}"
-                                        th:text="${education.getInstitution()}">
+                                        th:each="choice : ${educationGroupList}"
+                                        th:value="${choice.getId()}"
+                                        th:text="${choice.getGroupName()}">
                                 </option>
                             </select>
                             <button class="btn btn-secondary btn-sm ml-2 my-1">New</button>

@@ -20,8 +20,11 @@ public class Education extends AbstractModel {
     @OneToMany(mappedBy = "education")
     private final List<Address> addressList = new ArrayList<>();
 
+//    @ManyToMany(mappedBy = "educationList")
+//    private final List<Portfolio> portfolioList = new ArrayList<>();
+
     @ManyToMany(mappedBy = "educationList")
-    private final List<Portfolio> portfolioList = new ArrayList<>();
+    private final List<EducationGroup> educationGroupList = new ArrayList<>();
 
     public String getInstitution() {
         return institution;
@@ -64,8 +67,33 @@ public class Education extends AbstractModel {
         address.setEducation(this);
     }
 
-    public List<Portfolio> getPortfolioList() {
-        return portfolioList;
+    public void removeAddress(Address address) {
+        address.setEducation(null);
+        this.addressList.remove(address);
+    }
+
+//    public List<Portfolio> getPortfolioList() {
+//        return portfolioList;
+//    }
+//
+//    public void addPortfolio(Portfolio portfolio) {
+//        this.portfolioList.add(portfolio);
+//    }
+//
+//    public void removePortfolio(Portfolio portfolio) {
+//        this.portfolioList.remove(portfolio);
+//    }
+
+    public List<EducationGroup> getEducationGroupList() {
+        return educationGroupList;
+    }
+
+    public void addEducationGroup(EducationGroup educationGroup) {
+        this.educationGroupList.add(educationGroup);
+    }
+
+    public void removeEducationGroup(EducationGroup educationGroup) {
+        this.educationGroupList.remove(educationGroup);
     }
 
     @Override
