@@ -1,11 +1,13 @@
 package org.academiadecodigo.codezillas.portfolioApp.controller;
 
 import org.academiadecodigo.codezillas.portfolioApp.dao.education.EducationDAO;
+import org.academiadecodigo.codezillas.portfolioApp.dao.educationGroup.EducationGroupDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.identity.IdentityDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.industry.IndustryDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.portfolio.PortfolioDAO;
 import org.academiadecodigo.codezillas.portfolioApp.dao.role.RoleDAO;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.education.Education;
+import org.academiadecodigo.codezillas.portfolioApp.domainModel.education.EducationGroup;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.identity.Identity;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.industry.Industry;
 import org.academiadecodigo.codezillas.portfolioApp.domainModel.portfolio.Portfolio;
@@ -31,15 +33,15 @@ public class PortfolioCtrl {
     private final IndustryDAO industryDAO;
     private final RoleDAO roleDAO;
     private final IdentityDAO identityDAO;
-    private final EducationDAO educationDAO;
+    private final EducationGroupDAO educationGroupDAO;
 
     @Autowired
-    public PortfolioCtrl(PortfolioDAO portfolioDAO, IndustryDAO industryDAO, RoleDAO roleDAO, EducationDAO educationDAO, IdentityDAO identityDAO) {
+    public PortfolioCtrl(PortfolioDAO portfolioDAO, IndustryDAO industryDAO, RoleDAO roleDAO, IdentityDAO identityDAO, EducationGroupDAO educationGroupDAO) {
         this.portfolioDAO = portfolioDAO;
         this.industryDAO = industryDAO;
         this.roleDAO = roleDAO;
-        this.educationDAO = educationDAO;
         this.identityDAO = identityDAO;
+        this.educationGroupDAO = educationGroupDAO;
     }
 
     @GetMapping("/create")
@@ -51,13 +53,13 @@ public class PortfolioCtrl {
         List<Industry> industryList = industryDAO.findAll();
         List<Role> roleList = roleDAO.findAll();
         List<Identity>  identityList = identityDAO.findAll();
-        List<Education> educationList = educationDAO.findAll();
+        List<EducationGroup> educationGroupList = educationGroupDAO.findAll();
 
         model.addAttribute("portfolioDTO", portfolioDTO);
         model.addAttribute("industryList", industryList);
         model.addAttribute("roleList", roleList);
         model.addAttribute("identityList", identityList);
-        model.addAttribute("educationList", educationList);
+        model.addAttribute("educationGroupList", educationGroupList);
         model.addAttribute("savedRole", httpSession.getAttribute("savedRole"));
         model.addAttribute("savedIndustry", httpSession.getAttribute("savedIndustry"));
         return "portfolio/create";
