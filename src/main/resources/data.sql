@@ -43,12 +43,6 @@ values (1, 0, current_timestamp, current_timestamp, 'Concordia College Universit
 insert into education (id, version, creation_time, update_time, institution, course, start_date, end_date)
 values (2, 0, current_timestamp, current_timestamp, 'Academia De Codigo', 'Full Stack Developer', 'May 2019', 'Aug 2019');
 
-insert into education_group (id, version, creation_time, update_time, group_name)
-values (1, 0, current_timestamp, current_timestamp, 'All');
-
-insert into education_group (id, version, creation_time, update_time, group_name)
-values (2, 0, current_timestamp, current_timestamp, 'Developer');
-
 insert into address (
     id, version, creation_time, update_time, subject, num, address, parish, town_city, county, state_province,
     island, country_region, postal_code, identity_id, education_id)
@@ -60,6 +54,36 @@ insert into address (
     island, country_region, postal_code, identity_id, education_id)
 values (4, 0, current_timestamp, current_timestamp,
         'Education', null, 'Rua de Jesus', null, 'Praia de Vitoria', null, null, 'Terceira', 'Azores', '9000-000', null, 2);
+
+insert into education_group (id, version, creation_time, update_time, group_name)
+values (1, 0, current_timestamp, current_timestamp, 'All');
+
+insert into education_group (id, version, creation_time, update_time, group_name)
+values (2, 0, current_timestamp, current_timestamp, 'Developer');
+
+insert into knowledge (id, version, creation_time, update_time, knowledge_item)
+values (1, 0, current_timestamp, current_timestamp, 'Architectural Patterns');
+
+insert into knowledge (id, version, creation_time, update_time, knowledge_item)
+values (2, 0, current_timestamp, current_timestamp, 'Design Patterns');
+
+insert into knowledge (id, version, creation_time, update_time, knowledge_item)
+values (3, 0, current_timestamp, current_timestamp, 'Domain-Driven Design');
+
+insert into knowledge (id, version, creation_time, update_time, knowledge_item)
+values (4, 0, current_timestamp, current_timestamp, 'OOP');
+
+insert into knowledge (id, version, creation_time, update_time, knowledge_item)
+values (5, 0, current_timestamp, current_timestamp, 'Food and Beverage');
+
+insert into knowledge (id, version, creation_time, update_time, knowledge_item)
+values (6, 0, current_timestamp, current_timestamp, 'Customer Service');
+
+insert into knowledge (id, version, creation_time, update_time, knowledge_item)
+values (7, 0, current_timestamp, current_timestamp, 'Shipping');
+
+insert into knowledge (id, version, creation_time, update_time, knowledge_item)
+values (8, 0, current_timestamp, current_timestamp, 'Receiving');
 
 insert into portfolio (id, version, creation_time, update_time)
 values (1, 0, current_timestamp, current_timestamp);
@@ -91,3 +115,10 @@ insert into educationgroup_education (educationgroup_id, education_id) values (2
 
 insert into portfolio_educationgroup (portfolio_id, educationgroup_id) values (1, 1);
 insert into portfolio_educationgroup (portfolio_id, educationgroup_id) values (2, 2);
+
+insert into industry_knowledge (industry_id, knowledge_id) values (1, 1);
+insert into industry_knowledge (industry_id, knowledge_id) values (1, 2);
+insert into industry_knowledge (industry_id, knowledge_id) values (1, 3);
+insert into industry_knowledge (industry_id, knowledge_id) values (1, 4);
+insert into industry_knowledge (industry_id, knowledge_id) values (2, 5);
+insert into industry_knowledge (industry_id, knowledge_id) values (2, 6);
