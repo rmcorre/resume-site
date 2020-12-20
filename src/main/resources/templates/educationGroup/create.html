@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head('Education Group')">
+    </head>
+    <body class="bg-light h-100">
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-md-8 pb-3">
+                    <h3 class="text-secondary">Create Education Group</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <form
+                            th:action="@{/educationGroup/showPortfolioCreate}"
+                            th:object="${educationGroup}"
+                            method=post>
+
+                        <div class="form-group">
+                            <label class="d-flex" for="groupName">Group Name</label>
+                            <div class="d-flex">
+                                <input
+                                        th:field="*{groupName}"
+                                        class="form-control"
+                                        type="text"
+                                        id="groupName"
+                                        aria-describedby="groupNameHelp">
+                            </div>
+                        </div>
+                        <!-- Should use checkboxes for this -->
+                        <div class="form-group">
+                            <label class="d-flex" for="education">Education</label>
+                            <div class="d-flex">
+                                <select
+                                        name="education"
+                                        class="form-control"
+                                        multiple="multiple"
+                                        type="text"
+                                        id="education"
+                                        aria-describedby="educationHelp">
+                                    <option
+                                            th:each="education : ${educationList}"
+                                            th:value="${education.getId()}"
+                                            th:text="${education.getInstitution()}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,158 +1,160 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('Create a portfolio')">
-</head>
-<body class="bg-light h-100">
-    <div class="container pt-3">
-        <div class="row">
-            <div class="col-md-8 pb-3">
-                <h3 class="text-secondary">Create Portfolio</h3>
+    <head th:replace="fragments/head :: head('Create a portfolio')">
+    </head>
+    <body class="bg-light h-100">
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-md-8 pb-3">
+                    <h3 class="text-secondary">Create Portfolio</h3>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <form
-                    action="#"
-                    th:action = "@{/portfolio/process}"
-                    th:object = "${portfolioDTO}"
-                    method="post">
-                    <!-- Had to change from "th:field=${industry}" to "name=industry" to be able to use
-                        selected attribute. This may cause a problem with the processPortfolio method in
-                        the PortfolioCtrl -->
-                    <div class="form-group">
-                        <label class="d-flex" for="industry">Industry</label>
-                        <div class="d-flex">
-                            <select
-                                name="industry"
-                                class="form-control"
-                                type="text"
-                                id="industry"
-                                aria-describedby="industryHelp">
-                                <option
-                                        th:selected="${savedIndustry}"
-                                        th:each="choice : ${industryList}"
-                                        th:value="${choice.getId()}"
-                                        th:text="${choice.getIndustry()}">
-                                </option>
-                            </select>
-                            <a th:href="@{/industry/create}">
-                                <button
-                                        class="btn btn-secondary btn-sm ml-2 my-1"
-                                        type="button">New
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="d-flex" for="role">Role</label>
-                        <div class="d-flex">
-                            <select
-                                    name="role"
+            <div class="row">
+                <div class="col-md-8">
+                    <form
+                        action="#"
+                        th:action = "@{/portfolio/process}"
+                        th:object = "${portfolioDTO}"
+                        method="post">
+                        <!-- Had to change from "th:field=${industry}" to "name=industry" to be able to use
+                            selected attribute. This may cause a problem with the processPortfolio method in
+                            the PortfolioCtrl -->
+                        <div class="form-group">
+                            <label class="d-flex" for="industry">Industry</label>
+                            <div class="d-flex">
+                                <select
+                                    name="industry"
                                     class="form-control"
                                     type="text"
-                                    id="role"
-                                    aria-describedby="roleHelp">
-                                <option value=" ">Select a role</option>
-                                <option
-                                        th:selected="${savedRole}"
-                                        th:each="choice : ${roleList}"
-                                        th:value="${choice.getId()}"
-                                        th:text="${choice.getRole()}">
-                                </option>
-                            </select>
-                            <a th:href="@{/role/create}">
-                                <button
-                                        class="btn btn-secondary btn-sm ml-2 my-1"
-                                        type="button">New
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="d-flex" for="identity">Identity</label>
-                        <div class="d-flex">
-                            <select
-                                    th:field="*{identity}"
-                                    class="form-control"
-                                    id="identity"
-                                    aria-describedby="identityHelp">
-                                <option value=" ">Select an identity</option>
-                                <option
-                                        th:each="identity : ${identityList}"
-                                        th:value="${identity.getId()}"
-                                        th:text="${identity.firstName + ' ' + identity.lastName}">
-                                </option>
-                            </select>
-                            <button class="btn btn-secondary btn-sm ml-2 my-1">New</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="d-flex" for="education">Education</label>
-                        <div class="d-flex">
-                            <select
-                                    th:field="*{education}"
-                                    class="form-control"
-                                    id="education"
-                                    aria-describedby="educationHelp">
-                                <option value=" ">Select an education</option>
-                                <option
-                                        th:each="choice : ${educationGroupList}"
-                                        th:value="${choice.getId()}"
-                                        th:text="${choice.getGroupName()}">
-                                </option>
-                            </select>
-                            <button class="btn btn-secondary btn-sm ml-2 my-1">New</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="d-flex" for="summary">Summary</label>
-                        <textarea
-                                th:field="*{summary}"
-                                class="form-control d-flex"
-                                id="summary"
-                                aria-describedby="summaryHelp"
-                                rows="3"
-                        ></textarea>
-                    </div>
-
-<!--                        <div class="row">-->
-<!--                            <div class="form-group col-8">-->
-<!--                                <label class="mr-3">Active:</label>-->
-<!--                                <div class="form-check form-check-inline align-top">-->
-<!--                                    <form:radiobutton-->
-<!--                                            path="active"-->
-<!--                                            class="form-check-input"-->
-<!--                                            id="inlineRadioTrue"-->
-<!--                                            value="true"-->
-<!--                                    />-->
-<!--                                    <label class="form-check-label" for="inlineRadioTrue">True</label>-->
-<!--                                </div>-->
-<!--                                <div class="form-check form-check-inline align-top">-->
-<!--                                    <form:radiobutton-->
-<!--                                            path="active"-->
-<!--                                            class="form-check-input"-->
-<!--                                            id="inlineRadioFalse"-->
-<!--                                            value="false"-->
-<!--                                            checked="checked"-->
-<!--                                    />-->
-<!--                                    <label class="form-check-label" for="inlineRadioFalse">False</label>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                        <div class="row">
-                            <div class="form-group col-8">
-<!--                                <button-->
-<!--                                        class="btn btn-secondary btn-sm"-->
-<!--                                        onclick="location.href='${listIdentity}'"-->
-<!--                                        type="button">Cancel-->
-<!--                                </button>-->
-                                <button
-                                        class="btn btn-primary btn-sm"
-                                >Submit
-                                </button>
+                                    id="industry"
+                                    aria-describedby="industryHelp">
+                                    <option
+                                            th:selected="${savedIndustry}"
+                                            th:each="choice : ${industryList}"
+                                            th:value="${choice.getId()}"
+                                            th:text="${choice.getIndustry()}">
+                                    </option>
+                                </select>
+                                <a th:href="@{/industry/create}">
+                                    <button
+                                            class="btn btn-secondary btn-sm ml-2 my-1"
+                                            type="button">New
+                                    </button>
+                                </a>
                             </div>
                         </div>
-                </form>
+                        <div class="form-group">
+                            <label class="d-flex" for="role">Role</label>
+                            <div class="d-flex">
+                                <select
+                                        name="role"
+                                        class="form-control"
+                                        type="text"
+                                        id="role"
+                                        aria-describedby="roleHelp">
+                                    <option
+                                            th:selected="${savedRole}"
+                                            th:each="choice : ${roleList}"
+                                            th:value="${choice.getId()}"
+                                            th:text="${choice.getRole()}">
+                                    </option>
+                                </select>
+                                <a th:href="@{/role/create}">
+                                    <button
+                                            class="btn btn-secondary btn-sm ml-2 my-1"
+                                            type="button">New
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="identity">Identity</label>
+                            <div class="d-flex">
+                                <select
+                                        th:field="*{identity}"
+                                        class="form-control"
+                                        id="identity"
+                                        aria-describedby="identityHelp">
+                                    <option
+                                            th:each="identity : ${identityList}"
+                                            th:value="${identity.getId()}"
+                                            th:text="${identity.firstName + ' ' + identity.lastName}">
+                                    </option>
+                                </select>
+                                <button class="btn btn-secondary btn-sm ml-2 my-1">New</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="education">EducationGroup</label>
+                            <div class="d-flex">
+                                <select
+                                        th:field="*{education}"
+                                        class="form-control"
+                                        id="education"
+                                        aria-describedby="educationHelp">
+                                    <option
+                                            th:each="choice : ${educationGroupList}"
+                                            th:value="${choice.getId()}"
+                                            th:text="${choice.getGroupName()}">
+                                    </option>
+                                </select>
+                                <a th:href="@{/educationGroup/create}">
+                                    <button
+                                            class="btn btn-secondary btn-sm ml-2 my-1"
+                                            type="button">New
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="summary">Summary</label>
+                            <textarea
+                                    th:field="*{summary}"
+                                    class="form-control d-flex"
+                                    id="summary"
+                                    aria-describedby="summaryHelp"
+                                    rows="3"
+                            ></textarea>
+                        </div>
+
+    <!--                        <div class="row">-->
+    <!--                            <div class="form-group col-8">-->
+    <!--                                <label class="mr-3">Active:</label>-->
+    <!--                                <div class="form-check form-check-inline align-top">-->
+    <!--                                    <form:radiobutton-->
+    <!--                                            path="active"-->
+    <!--                                            class="form-check-input"-->
+    <!--                                            id="inlineRadioTrue"-->
+    <!--                                            value="true"-->
+    <!--                                    />-->
+    <!--                                    <label class="form-check-label" for="inlineRadioTrue">True</label>-->
+    <!--                                </div>-->
+    <!--                                <div class="form-check form-check-inline align-top">-->
+    <!--                                    <form:radiobutton-->
+    <!--                                            path="active"-->
+    <!--                                            class="form-check-input"-->
+    <!--                                            id="inlineRadioFalse"-->
+    <!--                                            value="false"-->
+    <!--                                            checked="checked"-->
+    <!--                                    />-->
+    <!--                                    <label class="form-check-label" for="inlineRadioFalse">False</label>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+                            <div class="row">
+                                <div class="form-group col-8">
+    <!--                                <button-->
+    <!--                                        class="btn btn-secondary btn-sm"-->
+    <!--                                        onclick="location.href='${listIdentity}'"-->
+    <!--                                        type="button">Cancel-->
+    <!--                                </button>-->
+                                    <button
+                                            class="btn btn-primary btn-sm"
+                                    >Submit
+                                    </button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
