@@ -9,7 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Industry extends AbstractModel {
@@ -24,7 +26,7 @@ public class Industry extends AbstractModel {
         name = "industry_knowledge",
         joinColumns = @JoinColumn(name = "industry_id"),
         inverseJoinColumns = @JoinColumn(name = "knowledge_id"))
-    private final List<Knowledge> knowledgeList = new ArrayList<>();
+    private final Set<Knowledge> knowledgeSet = new HashSet<>();
 
     public String getIndustry() {
         return industry;
@@ -46,15 +48,15 @@ public class Industry extends AbstractModel {
         portfolioList.remove(portfolio);
     }
 
-    public List<Knowledge> getKnowledgeList() {
-        return knowledgeList;
+    public Set<Knowledge> getKnowledgeSet() {
+        return knowledgeSet;
     }
 
     public void addKnowledge(Knowledge knowledge) {
-        knowledgeList.add(knowledge);
+        knowledgeSet.add(knowledge);
     }
 
     public void removeKnowledge(Knowledge knowledge) {
-        knowledgeList.remove(knowledge);
+        knowledgeSet.remove(knowledge);
     }
 }
