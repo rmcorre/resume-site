@@ -5,17 +5,15 @@ import org.academiadecodigo.codezillas.portfolioApp.domainModel.industry.Industr
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Knowledge extends AbstractModel {
 
     private String knowledgeItem;
 
-    @ManyToMany(mappedBy = "knowledgeList")
-    private final List<Industry> industryList = new ArrayList<>();
+    @ManyToMany(mappedBy = "knowledgeSet")
+    private final Set<Industry> industrySet = new HashSet<>();
 
     public String getKnowledgeItem() {
         return knowledgeItem;
@@ -25,16 +23,16 @@ public class Knowledge extends AbstractModel {
         this.knowledgeItem = knowledgeItem;
     }
 
-    public List<Industry> getIndustryList() {
-        return industryList;
+    public Set<Industry> getIndustrySet() {
+        return industrySet;
     }
 
     public void addIndustry(Industry industry) {
-        industryList.add(industry);
+        industrySet.add(industry);
     }
 
     public void removeIndustry(Industry industry) {
-        industryList.remove(industry);
+        industrySet.remove(industry);
     }
 
     @Override

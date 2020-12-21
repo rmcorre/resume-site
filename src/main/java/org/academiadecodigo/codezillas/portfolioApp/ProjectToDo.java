@@ -3,6 +3,7 @@ package org.academiadecodigo.codezillas.portfolioApp;
 public class ProjectToDo {
 
     //Todo:
+    //  Test Knowledge and Industry lists
 
     /* POSSIBLE SOLUTION TO RETAIN FORM VALUES AFTER SUBMIT
        https://stackoverflow.com/questions/33208581/how-to-keep-text-value-as-it-is-after-submit-button-is-clicked
