@@ -50,31 +50,31 @@ public class PortfolioApplication implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-        Role role = new Role();
-        Skill skill = new Skill();
-
-        role.setId(4);
-        role.setVersion(0);
-        role.setCreationTime(new Date());
-        role.setUpdateTime(new Date());
-        role.setRole("JUnit Tester");
-        roleDAO.saveOrUpdate(role);
-        Role savedRole = roleDAO.find(4);
-
-        logger.info("savedRole --> " + savedRole.toString());
-
-        skill.setId(1);
-        skill.setVersion(0);
-        skill.setCreationTime(new Date());
-        skill.setUpdateTime(new Date());
-        skill.setSkillName("JPA");
-        skillDAO.saveOrUpdate(skill);
-        Skill savedSkill = skillDAO.find(1);
-
-        savedRole.getSkillSet().add(savedSkill);
-        Role savedRoleWithSkillAdded = roleDAO.find(1);
-
-        logger.info("savedRoleWithSkillAdded --> " + savedRoleWithSkillAdded.toString());
+//        Role role = new Role();
+//        Skill skill = new Skill();
+//
+//        role.setId(4);
+//        role.setVersion(0);
+//        role.setCreationTime(new Date());
+//        role.setUpdateTime(new Date());
+//        role.setRole("JUnit Tester");
+//        roleDAO.saveOrUpdate(role);
+//        Role savedRole = roleDAO.find(4);
+//
+//        logger.info("savedRole --> " + savedRole.toString());
+//
+//        skill.setId(1);
+//        skill.setVersion(0);
+//        skill.setCreationTime(new Date());
+//        skill.setUpdateTime(new Date());
+//        skill.setSkillName("JPA");
+//        skillDAO.saveOrUpdate(skill);
+//        Skill savedSkill = skillDAO.find(1);
+//
+//        savedRole.getSkillSet().add(savedSkill);
+//        Role savedRoleWithSkillAdded = roleDAO.find(1);
+//
+//        logger.info("savedRoleWithSkillAdded --> " + savedRoleWithSkillAdded.toString());
 
     }
 }

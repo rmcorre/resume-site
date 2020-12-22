@@ -85,6 +85,33 @@ values (7, 0, current_timestamp, current_timestamp, 'Shipping');
 insert into knowledge (id, version, creation_time, update_time, knowledge_item)
 values (8, 0, current_timestamp, current_timestamp, 'Receiving');
 
+insert into skill (id, version, creation_time, update_time, skill_name)
+values (1, 0, current_timestamp, current_timestamp, 'JPA');
+
+insert into skill (id, version, creation_time, update_time, skill_name)
+values (2, 0, current_timestamp, current_timestamp, 'Hibernate');
+
+insert into skill (id, version, creation_time, update_time, skill_name)
+values (3, 0, current_timestamp, current_timestamp, 'Spring');
+
+insert into skill (id, version, creation_time, update_time, skill_name)
+values (4, 0, current_timestamp, current_timestamp, 'Spring Boot');
+
+insert into skill (id, version, creation_time, update_time, skill_name)
+values (5, 0, current_timestamp, current_timestamp, 'Spring MVC');
+
+insert into skill (id, version, creation_time, update_time, skill_name)
+values (6, 0, current_timestamp, current_timestamp, 'JDBC');
+
+insert into skill (id, version, creation_time, update_time, skill_name)
+values (7, 0, current_timestamp, current_timestamp, 'HTML');
+
+insert into skill (id, version, creation_time, update_time, skill_name)
+values (8, 0, current_timestamp, current_timestamp, 'CSS');
+
+insert into skill (id, version, creation_time, update_time, skill_name)
+values (9, 0, current_timestamp, current_timestamp, 'JavaScript');
+
 insert into portfolio (id, version, creation_time, update_time)
 values (1, 0, current_timestamp, current_timestamp);
 
@@ -122,3 +149,22 @@ insert into industry_knowledge (industry_id, knowledge_id) values (1, 3);
 insert into industry_knowledge (industry_id, knowledge_id) values (1, 4);
 insert into industry_knowledge (industry_id, knowledge_id) values (2, 5);
 insert into industry_knowledge (industry_id, knowledge_id) values (2, 6);
+
+insert into role_skill (role_id, skill_id) values (1, 1);
+insert into role_skill (role_id, skill_id) values (1, 2);
+insert into role_skill (role_id, skill_id) values (1, 3);
+insert into role_skill (role_id, skill_id) values (1, 4);
+insert into role_skill (role_id, skill_id) values (1, 5);
+insert into role_skill (role_id, skill_id) values (1, 6);
+insert into role_skill (role_id, skill_id) values (1, 7);
+insert into role_skill (role_id, skill_id) values (1, 8);
+insert into role_skill (role_id, skill_id) values (1, 9);
+insert into role_skill (role_id, skill_id) values (2, 7);
+insert into role_skill (role_id, skill_id) values (2, 8);
+insert into role_skill (role_id, skill_id) values (2, 9);
+insert into role_skill (role_id, skill_id) values (3, 1);
+insert into role_skill (role_id, skill_id) values (3, 2);
+insert into role_skill (role_id, skill_id) values (3, 3);
+insert into role_skill (role_id, skill_id) values (3, 4);
+insert into role_skill (role_id, skill_id) values (3, 5);
+insert into role_skill (role_id, skill_id) values (3, 6);
