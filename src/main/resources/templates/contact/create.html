@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Create Contact')">
+</head>
+<body class="bg-light h-100">
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-md-8 pb-3">
+            <h3 class="text-secondary">Create Contact</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <form
+                    action="#"
+                    th:action = "@{/contact/showPortfolioCreate}"
+                    th:object = "${newContact}"
+                    method="post">
+
+                <div class="form-group">
+                    <label class="d-flex" for="email">Email</label>
+                    <input
+                            th:field="*{email}"
+                            class="form-control"
+                            type="text"
+                            id="email"
+                            aria-describedby="email;lHelp"
+                    >
+                </div>
+                <div class="form-group">
+                    <label class="d-flex" for="phone">Phone</label>
+                    <input
+                            th:field="*{phone}"
+                            class="form-control"
+                            type="text"
+                            id="phone"
+                            aria-describedby="phoneHelp"
+                    >
+                </div>
+                <button class="btn btn-secondary btn-sm" type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

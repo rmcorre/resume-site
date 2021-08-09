@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="fragments/head :: head('Create Identity')">
+    </div>
+    <body class="bg-light h-100">
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-md-8 pb-3">
+                    <h3 class="text-secondary">Create Identity</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <form
+                            action="#"
+                            th:action = "@{/identity/saveAndRedirectToIndex}"
+                            th:object = "${identity}"
+                            method="post">
+
+                        <div class="form-outline mb-4">
+                            <input
+                                    th:field="*{firstName}"
+                                    class="form-control"
+                                    type="text"
+                                    id="firstName"
+                                    aria-describedby="firstNameHelp"
+                            >
+                            <label class="form-label" for="firstName">First Name</label>
+                        </div>
+                        <div class="form-outline">
+                            <input
+                                    th:field="*{lastName}"
+                                    class="form-control"
+                                    type="text"
+                                    id="lastName"
+                                    aria-describedby="lastNameHelp"
+                            >
+                            <label class="form-label" for="lastName">Last Name</label>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input
+                                    th:field="*{active}"
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="active"
+                                    value="true"
+                                    aria-describedby="activeHelp"
+                            >
+                            <label  class="form-check-label" for="active">Active</label>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script th:src="@{/css/MDB5-STANDARD-UI-KIT-Free-3.2.0/js/mdb.min.js}"></script>
+<!--        <script-->
+<!--                type="text/javascript"-->
+<!--                src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.js"-->
+<!--        ></script>-->
+    </body>
+</html>

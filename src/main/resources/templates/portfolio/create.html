@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/head :: head('Create a portfolio')">
+    <head th:replace="fragments/head :: head('Create Portfolio')">
     </head>
     <body class="bg-light h-100">
         <div class="container pt-3">
@@ -14,7 +14,7 @@
                     <form
                         action="#"
                         th:action = "@{/portfolio/process}"
-                        th:object = "${portfolioDTO}"
+                        th:object = "${portfolio}"
                         method="post">
                         <!-- Had to change from "th:field=${industry}" to "name=industry" to be able to use
                             selected attribute. This may cause a problem with the processPortfolio method in
@@ -23,16 +23,16 @@
                             <label class="d-flex" for="industry">Industry</label>
                             <div class="d-flex">
                                 <select
-                                    name="industry"
-                                    class="form-control"
-                                    type="text"
-                                    id="industry"
-                                    aria-describedby="industryHelp">
+                                        name="industryId"
+                                        class="form-control"
+                                        type="text"
+                                        id="industry"
+                                        aria-describedby="industryHelp">
                                     <option
                                             th:selected="${savedIndustry}"
-                                            th:each="choice : ${industryList}"
-                                            th:value="${choice.getId()}"
-                                            th:text="${choice.getIndustry()}">
+                                            th:each="industry : ${industrySet}"
+                                            th:value="${industry.getId()}"
+                                            th:text="${industry.getIndustry()}">
                                     </option>
                                 </select>
                                 <a th:href="@{/industry/create}">
@@ -47,16 +47,16 @@
                             <label class="d-flex" for="role">Role</label>
                             <div class="d-flex">
                                 <select
-                                        name="role"
+                                        name="roleId"
                                         class="form-control"
                                         type="text"
                                         id="role"
                                         aria-describedby="roleHelp">
                                     <option
                                             th:selected="${savedRole}"
-                                            th:each="choice : ${roleList}"
-                                            th:value="${choice.getId()}"
-                                            th:text="${choice.getRole()}">
+                                            th:each="role : ${roleSet}"
+                                            th:value="${role.getId()}"
+                                            th:text="${role.getRole()}">
                                     </option>
                                 </select>
                                 <a th:href="@{/role/create}">
@@ -71,31 +71,87 @@
                             <label class="d-flex" for="identity">Identity</label>
                             <div class="d-flex">
                                 <select
-                                        th:field="*{identity}"
+                                        name="identityId"
                                         class="form-control"
+                                        type="text"
                                         id="identity"
                                         aria-describedby="identityHelp">
                                     <option
-                                            th:each="identity : ${identityList}"
-                                            th:value="${identity.getId()}"
+                                            th:selected="${savedIdentity}"
+                                            th:each="identity : ${identitySet}"
+                                            th:value="${identity.id}"
                                             th:text="${identity.firstName + ' ' + identity.lastName}">
                                     </option>
                                 </select>
-                                <button class="btn btn-secondary btn-sm ml-2 my-1">New</button>
+                                <a th:href="@{/identity/create}">
+                                    <button
+                                            class="btn btn-secondary btn-sm ml-2 my-1"
+                                            type="button">New
+                                    </button>
+                                </a>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="d-flex" for="education">EducationGroup</label>
+                            <label class="d-flex" for="address">Address</label>
                             <div class="d-flex">
                                 <select
-                                        th:field="*{education}"
+                                        name="addressId"
                                         class="form-control"
-                                        id="education"
-                                        aria-describedby="educationHelp">
+                                        type="text"
+                                        id="address"
+                                        aria-describedby="addressHelp">
                                     <option
-                                            th:each="choice : ${educationGroupList}"
-                                            th:value="${choice.getId()}"
-                                            th:text="${choice.getGroupName()}">
+                                            th:selected="${savedAddress}"
+                                            th:each="address : ${addressSet}"
+                                            th:value="${address.id}"
+                                            th:text="${address.address + ', ' + address.countryRegion}">
+                                    </option>
+                                </select>
+                                <a th:href="@{/address/create}">
+                                    <button
+                                            class="btn btn-secondary btn-sm ml-2 my-1"
+                                            type="button">New
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="contact">Contact</label>
+                            <div class="d-flex">
+                                <select
+                                        name="contactId"
+                                        class="form-control"
+                                        type="text"
+                                        id="contact"
+                                        aria-describedby="contactHelp">
+                                    <option
+                                            th:selected="${savedContact}"
+                                            th:each="contact : ${contactSet}"
+                                            th:value="${contact.id}"
+                                            th:text="${contact.email + ', ' + contact.phone}">
+                                    </option>
+                                </select>
+                                <a th:href="@{/contact/create}">
+                                    <button
+                                            class="btn btn-secondary btn-sm ml-2 my-1"
+                                            type="button">New
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="educationGroup">EducationGroup</label>
+                            <div class="d-flex">
+                                <select
+                                        name="educationGroupId"
+                                        class="form-control"
+                                        id="educationGroup"
+                                        aria-describedby="educationGroupHelp">
+                                    <option
+                                            th:selected="${savedEducationGroup}"
+                                            th:each="educationGroup : ${educationGroupSet}"
+                                            th:value="${educationGroup.getId()}"
+                                            th:text="${educationGroup.getGroupName()}">
                                     </option>
                                 </select>
                                 <a th:href="@{/educationGroup/create}">
@@ -106,6 +162,28 @@
                                 </a>
                             </div>
                         </div>
+<!--                        <div class="form-group">-->
+<!--                            <label class="d-flex" for="education">Knowledge</label>-->
+<!--                            <div class="d-flex">-->
+<!--                                <select-->
+<!--                                        th:field="*{education}"-->
+<!--                                        class="form-control"-->
+<!--                                        id="education"-->
+<!--                                        aria-describedby="educationHelp">-->
+<!--                                    <option-->
+<!--                                            th:each="choice : ${educationGroupList}"-->
+<!--                                            th:value="${choice.getId()}"-->
+<!--                                            th:text="${choice.getGroupName()}">-->
+<!--                                    </option>-->
+<!--                                </select>-->
+<!--                                <a th:href="@{/educationGroup/create}">-->
+<!--                                    <button-->
+<!--                                            class="btn btn-secondary btn-sm ml-2 my-1"-->
+<!--                                            type="button">New-->
+<!--                                    </button>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="form-group">
                             <label class="d-flex" for="summary">Summary</label>
                             <textarea
@@ -158,3 +236,45 @@
                 </div>
             </div>
         </div>
+        <script>
+            const selectElement = document.querySelector('#industry');
+
+            selectElement.addEventListener('change', (event) => {
+                // if you want to support some really old IEs, add
+                // event = event || window.event;
+
+                let target = event.target;
+
+                let value = target.value;
+                // to support really old browsers, you may use
+                // selectElement.value || selectElement.options[selectElement.selectedIndex].value;
+                // like el Dude has suggested
+
+                // do whatever you want with value
+                alert("Industry selected: " + value);
+
+                //add fetch code
+                const url = 'http://localhost:8080/role/getRoles?id=' + value;
+                fetch(url)
+                    .then(
+                        function(response) {
+                            if (response.status !== 200) {
+                                console.log('Looks like there was a problem. Status Code: ' +
+                                    response.status);
+                                return;
+                            }
+
+                            // Examine the text in the response
+                            response.json().then(function(data) {
+                                console.log(data);
+                            });
+                        }
+                    )
+                    .catch(function(err) {
+                        console.log('Fetch Error :-S', err);
+                    });
+                
+            });
+            
+        </script>
+    </body>

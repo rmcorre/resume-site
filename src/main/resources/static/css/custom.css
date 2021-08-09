@@ -19,11 +19,13 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .leftSideBar {
-    background-color: rgb(101,147,193);
+    background-color: rgba(74, 109, 143, 1);
+    padding: 0 30px 0;
 }
 
 .rightSideBar {
-    background-color: rgb(101,147,193);
+    background-color: rgba(74, 109, 143, 1);
+    padding: 0 30px 0;
 }
 
 .signikaReg {
@@ -35,16 +37,26 @@ p, h1, h2, h3, h4, h5, h6 {
     font-size: .80em;
 }
 
-.brand {
-    padding-left: 3px;
+.branding {
+
 }
 
 .pic {
     background-image: url("../img/profilepicColorAdjust3.jpg");
     background-repeat: no-repeat;
-    width: 300px;
+    border-top: 1px dashed transparent;
+    border-left: 1px dashed transparent;
+    border-right: 1px dashed transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.75);
+    border-radius: 3px;
+    /*width: 300px;*/
     height: 208px;
+    object-fit: cover;
     position: relative;
+}
+
+.pic:hover {
+    border: 1px dashed white;
 }
 
 .identityWrapper {
@@ -54,16 +66,49 @@ p, h1, h2, h3, h4, h5, h6 {
     bottom: 0;
 }
 
-.summary {
+.summaryBody {
+    border: 1px dashed transparent;
     text-align: justify;
 }
 
+.summaryBody:hover {
+    border: 1px dashed white;
+}
+
+.contactBody {
+    border: 1px dashed transparent;
+}
+
+.contactBody:hover {
+    border: 1px dashed white;
+}
+
+.contactBody p {
+    margin: 0;
+}
+
+.educationRow {
+    border: 1px dashed transparent;
+}
+
+.educationRow:hover {
+    border: 1px dashed gray;
+}
+
+table td {
+    border-top: 0 !important;
+}
+
 .slateBlue {
-    color: rgb(101,147,193);
+    color: rgba(74, 109, 143, 1);
+}
+
+.bg-100 {
+    color: rgba(54, 60, 66, 1);
 }
 
 .bg-lightBlue {
-    background-color: #d9e4ff !important;
+    background-color:  rgba(167, 186, 204, 1);
 }
 
 .text-darkBlue {

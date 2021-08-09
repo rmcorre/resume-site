@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="fragments/head :: head('Identity List')">
+    </div>
+    <body class="h-100">
+        <div class="container pt-3 animate__animated animate__slideInRight">
+            <div class="row">
+                <div class="col-md-8 pb-3">
+                    <h3>Identities</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- Button trigger modal -->
+                    <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-mdb-toggle="modal"
+                            data-mdb-target="#identity"
+                            >Add
+                    </button>
+
+                    <table class="table table-striped table-sm">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Active</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="identity : ${identitySet}">
+                                <td th:text="${identity.id}">1</td>
+                                <td th:text="${identity.firstName}">John</td>
+                                <td th:text="${identity.lastName}">Doe</td>
+                                <td th:text="${identity.active} ?: 'false'">false</td>
+                                <td>
+                                    <a
+                                        href=""
+                                        data-mdb-toggle="modal"
+                                        data-mdb-target="#identity"
+                                        ><i class="fas fa-edit fa-fw"></i>
+                                    </a>
+                                    <a th:href="@{delete}"
+                                        onclick="if (!(confirm('Are you sure you want to delete this identity?'))) return false"
+                                        ><i class="fas fa-trash-alt fa-fw"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+<!--        <script>-->
+
+<!--            const url = "http://localhost:8080/identity/create"-->
+
+<!--            /**-->
+<!--             * @param {String} url - address for the HTML to fetch-->
+<!--             * @return {String} the resulting HTML string fragment-->
+<!--             */-->
+<!--            async function fetchHtmlAsText(url) {-->
+<!--                return await (await fetch(url)).text();-->
+<!--            }-->
+
+<!--            // this is your `load_home() function`-->
+<!--            async function loadIdentityCreate() {-->
+<!--                const contentDiv = document.getElementById("identityCreate");-->
+<!--                contentDiv.innerHTML = await fetchHtmlAsText(url);-->
+<!--            }-->
+
+<!--            window.addEventListener('load', function() {-->
+<!--                console.log('All assets are loaded')-->
+<!--            })-->
+<!--        </script>-->
+
+        <!-- Identity Modal -->
+        <div
+                class="modal fade"
+                id="identity"
+                tabindex="-1"
+                aria-labelledby="identityLabel"
+                aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content p-4">
+<!--                    <div class="modal-header">-->
+<!--                        <h5 class="modal-title" id="addIdentityLabel">Add Identity</h5>-->
+<!--                        <button-->
+<!--                                type="button"-->
+<!--                                class="btn-close"-->
+<!--                                data-mdb-dismiss="modal"-->
+<!--                                aria-label="Close"-->
+<!--                        ></button>-->
+<!--                    </div>-->
+                    <div class="modal-body">
+                        <form
+                                id="modalForm"
+                                action="#"
+                                th:action = "@{/identity/saveAndRedirectToIdentityList}"
+
+                                method="post">
+
+                            <input type="hidden" id="id"  />
+                            <div class="form-outline mb-4">
+                                <input
+
+                                        class="form-control"
+                                        type="text"
+                                        id="firstName"
+                                        aria-describedby="firstNameHelp"
+                                >
+                                <label class="form-label" for="firstName">First Name</label>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input
+
+                                        class="form-control"
+                                        type="text"
+                                        id="lastName"
+                                        aria-describedby="lastNameHelp"
+                                >
+                                <label class="form-label" for="lastName">Last Name</label>
+                            </div>
+                            <div class="form-check d-flex justify-content-center mb-4">
+                                <input
+
+                                        class="form-check-input me-2"
+                                        type="checkbox"
+                                        id="active"
+                                        aria-describedby="activeHelp"
+                                >
+                                <label  class="form-check-label" for="active">Active</label>
+                            </div>
+                            <button class="btn btn-primary btn-block mb-1" type="submit">Save</button>
+                        </form>
+                        <div id="identityCreate">
+
+                        </div>
+                    </div>
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">-->
+<!--                            Close-->
+<!--                        </button>-->
+<!--                        <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const identityModal = document.getElementById('identity');
+            identityModal.addEventListener('show.mdb.modal', (event) => {
+
+                // Element that triggered the modal
+                const anchor = event.relatedTarget;
+
+                // Extract info from data-mdb-* attributes
+                const id = anchor.getAttribute('data-mdb-id');
+                const firstName = anchor.getAttribute('data-mdb-firstName');
+                const lastName = anchor.getAttribute('data-mdb-lastName');
+                const active = anchor.getAttribute('data-mdb-active');
+
+                // If necessary, you could initiate an AJAX request here
+                // and then do the updating in a callback.
+                //
+
+                identityModal.addEventListener('shown.mdb.modal', function() {
+                    loadIdentityCreate();
+                    console.log('All assets are loaded')
+                })
+
+                // Update the modal's content.
+                const inputId = identityModal.querySelector('#id');
+                const inputFirstName = identityModal.querySelector('#firstName');
+                const inputLastName = identityModal.querySelector('#lastName');
+                const inputActive = identityModal.querySelector('#active');
+
+                // modalTitle.textContent = `New message to ${recipient}`
+                // inputId.value = id;
+                // inputFirstName.value = firstName;
+                // inputLastName.value = lastName;
+                // inputActive.value = active;
+            })
+        </script>
+
+        <script>
+            const url = "http://localhost:8080/identity/getIdentity?id=1"
+
+            async function fetchHtmlAsJson(url) {
+                return await (await fetch(url)).json();
+            }
+
+            // this is your `load_home() function`
+            async function loadIdentityCreate() {
+                const modalForm = document.querySelector('#modalForm');
+                let identity = await fetchHtmlAsJson(url);
+                populate(modalForm, identity);
+
+            }
+
+        </script>
+
+        <script>
+            /**
+             * Populate form fields from a JSON object.
+             *
+             * @param form object The form element containing your input fields.
+             * @param data array JSON data to populate the fields with.
+             * @param basename string Optional basename which is added to `name` attributes
+             */
+            function populate(form, data, basename) {
+                for (var key in data) {
+                    if (! data.hasOwnProperty(key)) {
+                        continue;
+                    }
+
+                    var name = key;
+                    var value = data[key];
+
+                    if ('undefined' === typeof value) {
+                        value = '';
+                    }
+
+                    if (null === value) {
+                        value = '';
+                    }
+
+                    // handle array name attributes
+                    if (typeof(basename) !== "undefined") {
+                        name = basename + "[" + key + "]";
+                    }
+
+                    if (value.constructor === Array) {
+                        name += '[]';
+                    } else if(typeof value == "object") {
+                        populate(form, value, name);
+                        continue;
+                    }
+
+                    // only proceed if element is set
+                    var element = form.elements.namedItem(name);
+                    if (! element) {
+                        continue;
+                    }
+
+                    var type = element.type || element[0].type;
+
+                    switch(type ) {
+                        default:
+                            element.value = value;
+                            break;
+
+                        case 'radio':
+                        case 'checkbox':
+                            var values = value.constructor === Array ? value : [value];
+                            for (var j=0; j < element.length; j++) {
+                                element[j].checked = values.indexOf(element[j].value) > -1;
+                            }
+                            break;
+
+                        case 'select-multiple':
+                            var values = value.constructor === Array ? value : [value];
+                            for(var k = 0; k < element.options.length; k++) {
+                                element.options[k].selected = (values.indexOf(element.options[k].value) > -1 );
+                            }
+                            break;
+
+                        case 'select':
+                        case 'select-one':
+                            element.value = value.toString() || value;
+                            break;
+
+                        case 'date':
+                            element.value = new Date(value).toISOString().split('T')[0];
+                            break;
+                    }
+
+                }
+            }
+        </script>
+
+        <script th:src="@{/css/MDB5-STANDARD-UI-KIT-Free-3.2.0/js/mdb.min.js}"></script>
+    </body>
+
+</html>

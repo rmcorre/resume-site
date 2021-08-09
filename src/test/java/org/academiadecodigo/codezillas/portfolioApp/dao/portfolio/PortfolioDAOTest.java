@@ -25,14 +25,14 @@ public class PortfolioDAOTest {
     @Autowired
     private PortfolioDAO portfolioDAO;
 
-    @Test
-    @Transactional
-    public void retrievePortfolioAndAssociatedIdentities() {
-        Portfolio portfolio = portfolioDAO.find(1);
-
-        assertEquals(1, portfolio.getId());
-        assertEquals(2, portfolio.getIdentityList().size());
-    }
+//    @Test
+//    @Transactional
+//    public void retrievePortfolioAndAssociatedIdentities() {
+//        Portfolio portfolio = portfolioDAO.find(1);
+//
+//        assertEquals(1, portfolio.getId());
+//        assertEquals(2, portfolio.getIdentityList().size());
+//    }
 
 
     @Test

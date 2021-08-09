@@ -11,7 +11,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-@Transactional
 public abstract class GenericDAO<T extends Model> implements DAO<T> {
 
     @Autowired
@@ -42,6 +41,7 @@ public abstract class GenericDAO<T extends Model> implements DAO<T> {
 
     @Override
     public T saveOrUpdate(T modelObject) {
+        System.out.println("######################" + modelObject);
         return em.merge(modelObject);
     }
 

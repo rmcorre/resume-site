@@ -9,10 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpSession;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/educationGroup")
@@ -32,10 +36,23 @@ public class EducationGroupCtrl {
     public String create(Model model) {
 
         EducationGroup educationGroup = new EducationGroup();
-        List<Education> educationList = educationDAO.findAll();
+        Set<Education> educationSet = new HashSet<>(educationDAO.findAll());
 
         model.addAttribute("educationGroup", educationGroup);
-        model.addAttribute("educationList", educationList);
+        model.addAttribute("educationSet", educationSet);
         return "educationGroup/create";
+    }
+
+    @PostMapping("/saveAndRedirectToPortfolioCreate")
+    public String saveAndRedirectToPortfolioCreate(EducationGroup newEducationGroup, HttpSession httpSession) {
+
+        for (Integer education : newEducationGroup.getEducations()) {
+            newEducationGroup.addEducation(educationDAO.find(education));
+        }
+
+        EducationGroup savedEducationGroup = educationGroupDAO.saveOrUpdate(newEducationGroup);
+        httpSession.setAttribute("savedEducationGroup", savedEducationGroup);
+
+        return "redirect:/portfolio/create";
     }
 }
