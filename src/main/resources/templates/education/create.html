@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head('Create Education')">
+    </head>
+    <body class="bg-light h-100">
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-md-8 pb-3">
+                    <h3 class="text-secondary">Create Education</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <form
+                            action="#"
+                            th:action = "@{/education/saveAndRedirectToPortfolioCreate}"
+                            th:object = "${newEducation}"
+                            method="post">
+
+                        <div class="form-group">
+                            <label class="d-flex" for="institution">Institution</label>
+                            <input
+                                    th:field="*{institution}"
+                                    class="form-control"
+                                    type="text"
+                                    id="institution"
+                                    aria-describedby="institutionHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="course">Course</label>
+                            <input
+                                    th:field="*{course}"
+                                    class="form-control"
+                                    type="text"
+                                    id="course"
+                                    aria-describedby="courseHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="startDate">Start Date</label>
+                            <input
+                                    th:field="*{startDate}"
+                                    class="form-control"
+                                    type="text"
+                                    id="startDate"
+                                    aria-describedby="startDateHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="endDate">End Date</label>
+                            <input
+                                    th:field="*{endDate}"
+                                    class="form-control"
+                                    type="text"
+                                    id="endDate"
+                                    aria-describedby="endDateHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="number">Number</label>
+                            <input
+                                    th:field="*{educationAddress.num}"
+                                    class="form-control"
+                                    type="text"
+                                    id="number"
+                                    aria-describedby="numberHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="address">Address</label>
+                            <input
+                                    th:field="*{educationAddress.address}"
+                                    class="form-control"
+                                    type="text"
+                                    id="address"
+                                    aria-describedby="addressHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="parish">Parish</label>
+                            <input
+                                    th:field="*{educationAddress.parish}"
+                                    class="form-control"
+                                    type="text"
+                                    id="parish"
+                                    aria-describedby="parishHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="townCity">Town/City</label>
+                            <input
+                                    th:field="*{educationAddress.townCity}"
+                                    class="form-control"
+                                    type="text"
+                                    id="townCity"
+                                    aria-describedby="townCityHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="county">County</label>
+                            <input
+                                    th:field="*{educationAddress.county}"
+                                    class="form-control"
+                                    type="text"
+                                    id="county"
+                                    aria-describedby="countyHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="stateProvince">State/Province</label>
+                            <input
+                                    th:field="*{educationAddress.stateProvince}"
+                                    class="form-control"
+                                    type="text"
+                                    id="stateProvince"
+                                    aria-describedby="stateProvinceHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="island">Island</label>
+                            <input
+                                    th:field="*{educationAddress.island}"
+                                    class="form-control"
+                                    type="text"
+                                    id="island"
+                                    aria-describedby="islandHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="countryRegion">Country/Region</label>
+                            <input
+                                    th:field="*{educationAddress.countryRegion}"
+                                    class="form-control"
+                                    type="text"
+                                    id="countryRegion"
+                                    aria-describedby="countryRegionHelp"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="d-flex" for="postalCode">Postal Code</label>
+                            <input
+                                    th:field="*{educationAddress.postalCode}"
+                                    class="form-control"
+                                    type="text"
+                                    id="postalCode"
+                                    aria-describedby="postalCodeHelp"
+                            >
+                        </div>
+                        <button class="btn btn-secondary btn-sm" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

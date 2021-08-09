@@ -47,8 +47,6 @@ class IdentityDAOTest {
         identity.setUpdateTime(new Date());
         identity.setFirstName("Jimmy");
         identity.setLastName("Page");
-        identity.setEmail("jimmy@gmail.com");
-        identity.setPhone("91 777 7777");
 
         identityDAO.saveOrUpdate(identity);
         assertEquals(identity, identityDAO.find(5));

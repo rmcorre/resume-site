@@ -60,24 +60,22 @@ public class IdentityTest {
         identity.setUpdateTime(new Date());
         identity.setFirstName("Anthony");
         identity.setLastName("Hayduk");
-        identity.setEmail("anthony@gmail.com");
-        identity.setPhone("421 555 5555");
         identityDAO.saveOrUpdate(identity);
     }
 
-    @Test
-    @Transactional
-    @DirtiesContext
-    void getAddressTest() {
-
-        identity.addAddress(address);
-        identityDAO.saveOrUpdate(identity);
-        logger.info("identity.getAddressList().get(0).getId() --> {}", identity.getAddressList().get(0).getId());
-
-
-        assertEquals(4, identity.getId());
-        assertEquals(3, identity.getAddressList().get(0).getId());
-    }
+//    @Test
+//    @Transactional
+//    @DirtiesContext
+//    void getAddressTest() {
+//
+//        identity.addAddress(address);
+//        identityDAO.saveOrUpdate(identity);
+//        logger.info("identity.getAddressList().get(0).getId() --> {}", identity.getAddressList().get(0).getId());
+//
+//
+//        assertEquals(4, identity.getId());
+//        assertEquals(3, identity.getAddressList().get(0).getId());
+//    }
 
 
 }
